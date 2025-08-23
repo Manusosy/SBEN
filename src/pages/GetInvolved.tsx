@@ -293,26 +293,26 @@ const GetInvolved = () => {
 
           <div className="max-w-6xl mx-auto">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-12 bg-white p-2 rounded-2xl shadow-lg border border-gray-200">
+              <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 mb-12 bg-white p-3 rounded-3xl shadow-xl border border-gray-200 overflow-hidden gap-2">
                 <TabsTrigger 
                   value="volunteer" 
-                  className="flex items-center justify-center space-x-3 data-[state=active]:bg-secondary-500 data-[state=active]:text-white data-[state=active]:shadow-md rounded-xl py-4 px-6 transition-all duration-300 font-semibold text-base"
+                  className="flex items-center justify-center space-x-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-secondary-500 data-[state=active]:to-secondary-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-2xl py-4 md:py-5 px-6 md:px-8 transition-all duration-300 font-semibold text-base md:text-lg data-[state=active]:scale-105 data-[state=inactive]:hover:bg-gray-50 data-[state=inactive]:text-gray-700 data-[state=inactive]:hover:text-gray-900"
                 >
-                  <Users className="w-5 h-5" />
+                  <Users className="w-5 h-5 md:w-6 md:h-6" />
                   <span>Volunteer</span>
                 </TabsTrigger>
                 <TabsTrigger 
                   value="donate" 
-                  className="flex items-center justify-center space-x-3 data-[state=active]:bg-secondary-500 data-[state=active]:text-white data-[state=active]:shadow-md rounded-xl py-4 px-6 transition-all duration-300 font-semibold text-base"
+                  className="flex items-center justify-center space-x-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-secondary-500 data-[state=active]:to-secondary-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-2xl py-4 md:py-5 px-6 md:px-8 transition-all duration-300 font-semibold text-base md:text-lg data-[state=active]:scale-105 data-[state=inactive]:hover:bg-gray-50 data-[state=inactive]:text-gray-700 data-[state=inactive]:hover:text-gray-900"
                 >
-                  <Heart className="w-5 h-5" />
+                  <Heart className="w-5 h-5 md:w-6 md:h-6" />
                   <span>Donate</span>
                 </TabsTrigger>
                 <TabsTrigger 
                   value="partnership" 
-                  className="flex items-center justify-center space-x-3 data-[state=active]:bg-secondary-500 data-[state=active]:text-white data-[state=active]:shadow-md rounded-xl py-4 px-6 transition-all duration-300 font-semibold text-base"
+                  className="flex items-center justify-center space-x-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-secondary-500 data-[state=active]:to-secondary-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-2xl py-4 md:py-5 px-6 md:px-8 transition-all duration-300 font-semibold text-base md:text-lg data-[state=active]:scale-105 data-[state=inactive]:hover:bg-gray-50 data-[state=inactive]:text-gray-700 data-[state=inactive]:hover:text-gray-900"
                 >
-                  <Handshake className="w-5 h-5" />
+                  <Handshake className="w-5 h-5 md:w-6 md:h-6" />
                   <span>Partnership</span>
                 </TabsTrigger>
               </TabsList>

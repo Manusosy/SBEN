@@ -1,48 +1,68 @@
 
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { cn } from '@/lib/utils';
-import { Menu, X, BookOpen, Users, Lightbulb, HandHeart, Calendar, Trophy, FileText, Mail, ImageIcon } from "lucide-react";
-import { motion } from "framer-motion";
-import { 
-  NavigationMenu, 
-  NavigationMenuContent, 
-  NavigationMenuItem, 
-  NavigationMenuLink, 
-  NavigationMenuList, 
-  NavigationMenuTrigger, 
-  navigationMenuTriggerStyle 
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import {
+  BookOpen,
+  Users,
+  Lightbulb,
+  HandHeart,
+  FileText,
+  Calendar,
+  ImageIcon,
+  Trophy,
+  Mail,
+  ChevronDown,
+  Menu,
+  X
+} from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openSections, setOpenSections] = useState<string[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    if (!isMenuOpen) {
+      setOpenSections([]);
+    }
+  };
+
+  const toggleSection = (section: string) => {
+    setOpenSections(prev => 
+      prev.includes(section) 
+        ? prev.filter(s => s !== section)
+        : [...prev, section]
+    );
   };
 
   return (
-    <motion.nav 
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full",
-        isScrolled ? "bg-white shadow-sm" : "bg-primary-500"
-      )}
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-    >
+    <nav className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+      isScrolled 
+        ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200" 
+        : "bg-transparent"
+    )}>
       <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="flex items-center justify-between h-16">
           {/* Logo - Left */}
@@ -177,7 +197,7 @@ const Navbar = () => {
                               <Calendar className="w-5 h-5 mr-2" />
                               <div>
                                 <div className="font-medium">Events</div>
-                                <p className="text-sm text-gray-500">Community events and activities</p>
+                                <p className="text-sm text-gray-500">Upcoming community events</p>
                               </div>
                             </div>
                           </Link>
@@ -190,7 +210,7 @@ const Navbar = () => {
                               <ImageIcon className="w-5 h-5 mr-2" />
                               <div>
                                 <div className="font-medium">Gallery</div>
-                                <p className="text-sm text-gray-500">Photos from our programs</p>
+                                <p className="text-sm text-gray-500">Visual stories of our impact</p>
                               </div>
                             </div>
                           </Link>
@@ -203,7 +223,7 @@ const Navbar = () => {
                               <Trophy className="w-5 h-5 mr-2" />
                               <div>
                                 <div className="font-medium">Success Stories</div>
-                                <p className="text-sm text-gray-500">Impact and achievements</p>
+                                <p className="text-sm text-gray-500">Inspiring transformation stories</p>
                               </div>
                             </div>
                           </Link>
@@ -230,15 +250,15 @@ const Navbar = () => {
                 Donate
               </Link>
             </div>
-            
+
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <button 
-                onClick={toggleMenu} 
+              <button
+                onClick={toggleMenu}
                 className={cn(
                   "p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors",
-                  isScrolled 
-                    ? "text-gray-700 hover:bg-gray-100 focus:ring-gray-500" 
+                  isScrolled
+                    ? "text-gray-700 hover:bg-gray-100 focus:ring-gray-500"
                     : "text-white hover:bg-white/10 focus:ring-white"
                 )}
                 aria-label="Toggle mobile menu"
@@ -251,135 +271,206 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <motion.div 
-          className="md:hidden bg-white border-t border-gray-200 shadow-lg"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.2 }}
-        >
-          <div className="px-4 py-6 space-y-4">
-            {/* Home */}
-            <Link 
-              to="/" 
-              className="block py-3 px-4 text-lg font-medium text-gray-900 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-              onClick={toggleMenu}
-            >
-              Home
-            </Link>
-            
-            {/* About Us Section */}
-            <div className="space-y-2">
-              <div className="px-4 py-2 text-sm font-semibold text-gray-500 uppercase tracking-wide">About Us</div>
-              <Link 
-                to="/about" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="md:hidden bg-white border-t border-gray-200 shadow-lg"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="px-4 py-6 space-y-4">
+              {/* Home */}
+              <Link
+                to="/"
+                className="block py-3 px-4 text-lg font-medium text-gray-900 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={toggleMenu}
               >
-                <BookOpen className="w-5 h-5 mr-3" />
-                Our Story
+                Home
               </Link>
-              <Link 
-                to="/about/team" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-                onClick={toggleMenu}
-              >
-                <Users className="w-5 h-5 mr-3" />
-                Our Team
-              </Link>
-            </div>
 
-            {/* Programs Section */}
-            <div className="space-y-2">
-              <div className="px-4 py-2 text-sm font-semibold text-gray-500 uppercase tracking-wide">Programs</div>
-              <Link 
-                to="/programs/mentorship" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-                onClick={toggleMenu}
-              >
-                <Users className="w-5 h-5 mr-3" />
-                Mentorship Program
-              </Link>
-              <Link 
-                to="/programs/education" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-                onClick={toggleMenu}
-              >
-                <Lightbulb className="w-5 h-5 mr-3" />
-                Education Initiatives
-              </Link>
-              <Link 
-                to="/programs/community" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-                onClick={toggleMenu}
-              >
-                <HandHeart className="w-5 h-5 mr-3" />
-                Community Development
-              </Link>
-            </div>
+              {/* About Us Section */}
+              <div className="space-y-2">
+                <button
+                  onClick={() => toggleSection('about')}
+                  className="flex items-center justify-between w-full py-3 px-4 text-lg font-medium text-gray-900 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  <div className="flex items-center">
+                    <BookOpen className="w-5 h-5 mr-3" />
+                    About Us
+                  </div>
+                  <ChevronDown 
+                    className={cn(
+                      "w-5 h-5 transition-transform duration-200",
+                      openSections.includes('about') ? "rotate-180" : ""
+                    )} 
+                  />
+                </button>
+                <AnimatePresence>
+                  {openSections.includes('about') && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="ml-8 space-y-2"
+                    >
+                      <Link
+                        to="/about"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Our Story
+                      </Link>
+                      <Link
+                        to="/about/team"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Our Team
+                      </Link>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-            {/* Resources Section */}
-            <div className="space-y-2">
-              <div className="px-4 py-2 text-sm font-semibold text-gray-500 uppercase tracking-wide">Resources</div>
-              <Link 
-                to="/blog" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-                onClick={toggleMenu}
-              >
-                <FileText className="w-5 h-5 mr-3" />
-                Blog
-              </Link>
-              <Link 
-                to="/resources/events" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-                onClick={toggleMenu}
-              >
-                <Calendar className="w-5 h-5 mr-3" />
-                Events
-              </Link>
-              <Link 
-                to="/gallery" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-                onClick={toggleMenu}
-              >
-                <ImageIcon className="w-5 h-5 mr-3" />
-                Gallery
-              </Link>
-              <Link 
-                to="/resources/success-stories" 
-                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-                onClick={toggleMenu}
-              >
-                <Trophy className="w-5 h-5 mr-3" />
-                Success Stories
-              </Link>
-            </div>
+              {/* Programs Section */}
+              <div className="space-y-2">
+                <button
+                  onClick={() => toggleSection('programs')}
+                  className="flex items-center justify-between w-full py-3 px-4 text-lg font-medium text-gray-900 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  <div className="flex items-center">
+                    <Users className="w-5 h-5 mr-3" />
+                    Programs
+                  </div>
+                  <ChevronDown 
+                    className={cn(
+                      "w-5 h-5 transition-transform duration-200",
+                      openSections.includes('programs') ? "rotate-180" : ""
+                    )} 
+                  />
+                </button>
+                <AnimatePresence>
+                  {openSections.includes('programs') && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="ml-8 space-y-2"
+                    >
+                      <Link
+                        to="/programs/mentorship"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Mentorship Program
+                      </Link>
+                      <Link
+                        to="/programs/education"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Education Initiatives
+                      </Link>
+                      <Link
+                        to="/programs/community"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Community Development
+                      </Link>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-            {/* Contact */}
-            <Link 
-              to="/contact" 
-              className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors" 
-              onClick={toggleMenu}
-            >
-              <Mail className="w-5 h-5 mr-3" />
-              Contact Us
-            </Link>
+              {/* Resources Section */}
+              <div className="space-y-2">
+                <button
+                  onClick={() => toggleSection('resources')}
+                  className="flex items-center justify-between w-full py-3 px-4 text-lg font-medium text-gray-900 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  <div className="flex items-center">
+                    <FileText className="w-5 h-5 mr-3" />
+                    Resources
+                  </div>
+                  <ChevronDown 
+                    className={cn(
+                      "w-5 h-5 transition-transform duration-200",
+                      openSections.includes('resources') ? "rotate-180" : ""
+                    )} 
+                  />
+                </button>
+                <AnimatePresence>
+                  {openSections.includes('resources') && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="ml-8 space-y-2"
+                    >
+                      <Link
+                        to="/blog"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Blog
+                      </Link>
+                      <Link
+                        to="/resources/events"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Events
+                      </Link>
+                      <Link
+                        to="/gallery"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Gallery
+                      </Link>
+                      <Link
+                        to="/resources/success-stories"
+                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                        onClick={toggleMenu}
+                      >
+                        Success Stories
+                      </Link>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-            {/* Mobile Donate Button */}
-            <div className="pt-4">
-              <Link 
-                to="/donate" 
-                className="block w-full text-center bg-empowerment-500 text-white py-3 px-4 rounded-lg hover:bg-empowerment-600 transition-colors font-medium" 
+              {/* Contact */}
+              <Link
+                to="/contact"
+                className="flex items-center py-3 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={toggleMenu}
               >
-                Donate Now
+                <Mail className="w-5 h-5 mr-3" />
+                Contact Us
               </Link>
+
+              {/* Mobile Donate Button */}
+              <div className="pt-4">
+                <Link
+                  to="/donate"
+                  className="block w-full text-center bg-empowerment-500 text-white py-3 px-4 rounded-lg hover:bg-empowerment-600 transition-colors font-medium"
+                  onClick={toggleMenu}
+                >
+                  Donate Now
+                </Link>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      )}
-    </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
 
