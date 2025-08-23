@@ -123,52 +123,9 @@ const Navbar = () => {
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={cn(isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
-                    Programs
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-4 w-[400px]">
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <Link to="/programs/mentorship" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                            <div className="flex items-center">
-                              <Users className="w-5 h-5 mr-2" />
-                              <div>
-                                <div className="font-medium">Mentorship Program</div>
-                                <p className="text-sm text-gray-500">Guidance and support for youth</p>
-                              </div>
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <Link to="/programs/education" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                            <div className="flex items-center">
-                              <Lightbulb className="w-5 h-5 mr-2" />
-                              <div>
-                                <div className="font-medium">Education Initiatives</div>
-                                <p className="text-sm text-gray-500">Supporting students and learning</p>
-                              </div>
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <Link to="/programs/community" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                            <div className="flex items-center">
-                              <HandHeart className="w-5 h-5 mr-2" />
-                              <div>
-                                <div className="font-medium">Community Development</div>
-                                <p className="text-sm text-gray-500">Building stronger communities</p>
-                              </div>
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
+                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                    <Link to="/programs">Programs</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
@@ -336,56 +293,14 @@ const Navbar = () => {
               </div>
 
               {/* Programs Section */}
-              <div className="space-y-2">
-                <button
-                  onClick={() => toggleSection('programs')}
-                  className="flex items-center justify-between w-full py-3 px-4 text-lg font-medium text-gray-900 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  <div className="flex items-center">
-                    <Users className="w-5 h-5 mr-3" />
-                    Programs
-                  </div>
-                  <ChevronDown 
-                    className={cn(
-                      "w-5 h-5 transition-transform duration-200",
-                      openSections.includes('programs') ? "rotate-180" : ""
-                    )} 
-                  />
-                </button>
-                <AnimatePresence>
-                  {openSections.includes('programs') && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="ml-8 space-y-2"
-                    >
-                      <Link
-                        to="/programs/mentorship"
-                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        Mentorship Program
-                      </Link>
-                      <Link
-                        to="/programs/education"
-                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        Education Initiatives
-                      </Link>
-                      <Link
-                        to="/programs/community"
-                        className="block py-2 px-4 text-gray-700 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
-                        onClick={toggleMenu}
-                      >
-                        Community Development
-                      </Link>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              <Link
+                to="/programs"
+                className="flex items-center py-3 px-4 text-lg font-medium text-gray-900 hover:text-empowerment-500 hover:bg-gray-50 rounded-lg transition-colors"
+                onClick={toggleMenu}
+              >
+                <Users className="w-5 h-5 mr-3" />
+                Programs
+              </Link>
 
               {/* Resources Section */}
               <div className="space-y-2">
