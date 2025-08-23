@@ -1,37 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import { blogPosts } from "@/data/blogPosts";
 
 const BlogPreview = () => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Empowering Youth Through Mentorship: Stories of Impact",
-      excerpt: "Discover how SBEN's mentorship program is creating lasting positive change in the lives of young people across our community.",
-      image: "/lovable-uploads/4187f423-ba69-4043-be76-c43098488348.png",
-      date: "August 15, 2025",
-      author: "SBEN Team",
-      slug: "mentorship-impact-stories"
-    },
-    {
-      id: 2,
-      title: "Building Future Leaders: SBEN's Leadership Development Program",
-      excerpt: "How our comprehensive leadership program is equipping the next generation with the skills and confidence to drive positive change.",
-      image: "/lovable-uploads/526dc38a-25fa-40d4-b520-425b23ae0464.png",
-      date: "August 10, 2025",
-      author: "SBEN Team",
-      slug: "leadership-development-program"
-    },
-    {
-      id: 3,
-      title: "Education Initiatives Making a Difference in Our Community",
-      excerpt: "Exploring the impact of SBEN's educational support programs and how they're helping students achieve their academic goals.",
-      image: "/lovable-uploads/5ca619e6-2139-4879-9b3c-94777ab85e2a.png",
-      date: "August 5, 2025",
-      author: "SBEN Team",
-      slug: "education-initiatives-impact"
-    }
-  ];
+  // Get the 3 newest blog posts for the homepage
+  const latestPosts = blogPosts.slice(0, 3);
 
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -52,7 +26,7 @@ const BlogPreview = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {blogPosts.map((post, index) => (
+          {latestPosts.map((post, index) => (
             <motion.article
               key={post.id}
               className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100"
@@ -63,7 +37,7 @@ const BlogPreview = () => {
             >
               <div className="aspect-video overflow-hidden">
                 <img
-                  src={post.image}
+                  src={post.imageUrl || '/gallery/placeholder.svg'}
                   alt={post.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
@@ -88,7 +62,7 @@ const BlogPreview = () => {
                 
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="inline-flex items-center text-tebari-green hover:text-tebari-green/80 font-medium transition-colors group"
+                  className="inline-flex items-center text-empowerment-500 hover:text-empowerment-600 font-medium transition-colors group"
                 >
                   Read More
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -107,7 +81,7 @@ const BlogPreview = () => {
         >
           <Link
             to="/blog"
-            className="inline-flex items-center px-6 py-3 bg-tebari-green text-white rounded-lg hover:bg-tebari-green/90 transition-all group"
+            className="inline-flex items-center px-6 py-3 bg-empowerment-500 text-white rounded-lg hover:bg-empowerment-600 transition-all group"
           >
             View All Articles
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

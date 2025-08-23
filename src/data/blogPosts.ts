@@ -34,319 +34,307 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: '1',
-    title: 'Circular Plastic Economy: Rethinking Waste Management',
-    slug: 'circular-plastic-economy',
-    excerpt: 'Exploring how circular economy principles can transform plastic waste from a problem into a resource for sustainable development in Kenya.',
+    title: 'Empowering Women Through Economic Independence: SBEN\'s Success Story',
+    slug: 'women-empowerment-success',
+    excerpt: 'Discover how SBEN\'s women empowerment program is transforming lives through savings groups, business training, and leadership development in Kibera.',
     content: [
       {
         type: 'heading',
-        content: 'The Problem with Linear Plastic Economy'
+        content: 'Breaking Barriers to Economic Independence'
       },
       {
         type: 'paragraph',
-        content: 'Kenya, like many developing countries, faces significant challenges with plastic waste management. With over 500 million plastic bags entering the waste stream annually, the traditional approach of disposal in landfills or burning has created environmental and health crises.'
+        content: 'In Kibera, Nairobi, women face significant challenges in accessing financial resources and business opportunities. SBEN\'s women empowerment program is changing this narrative by providing comprehensive support systems that enable women to build sustainable livelihoods.'
       },
       {
         type: 'heading',
-        content: 'SBEN\'s Circular Approach'
+        content: 'Our Holistic Approach'
       },
       {
         type: 'paragraph',
-        content: 'At SBEN, we\'ve reimagined plastic waste as a valuable resource. Our circular economy model includes:'
+        content: 'SBEN\'s women empowerment initiative focuses on three key areas:'
       },
       {
         type: 'icon-list',
         items: [
-          'Community Collection Networks: We work directly with coastal communities to establish collection points where plastic waste is gathered, sorted, and prepared for processing.',
-          'Waste Mapping Platform: We are developing a real-time mapping system for plastic waste accumulation, giving recyclers live data on available plastic for collection and order placement.',
-          'Product Innovation: We develop new products from recycled plastics, including construction materials, textiles, and packaging solutions.',
-          'Community Empowerment: Our model creates employment opportunities and provides training to community members, ensuring sustainable economic benefits.'
+          'Savings Groups: Community-based saving and lending circles that provide financial security and access to credit.',
+          'Business Training: Comprehensive entrepreneurship and business management skills development.',
+          'Leadership Programs: Developing women leaders who can advocate for their communities and drive positive change.'
         ]
       },
       {
         type: 'stats',
         statsData: [
-          { icon: 'TrendingUp', value: '50+', label: 'Tons of Plastic Collected' },
-          { icon: 'Users', value: '200+', label: 'Jobs Created' },
-          { icon: 'DollarSign', value: '120', label: 'Tons CO₂ Reduced Annually' }
+          { icon: 'Users', value: '150+', label: 'Women Empowered' },
+          { icon: 'TrendingUp', value: '25+', label: 'Businesses Started' },
+          { icon: 'DollarSign', value: '40%', label: 'Income Increase' }
         ]
       },
       {
         type: 'quote',
-        content: 'The transition to a circular plastic economy requires collaboration between government, businesses, and communities. At SBEN, we\'re committed to leading this transformation in Kenya and across East Africa.'
+        content: 'When women are economically empowered, entire communities thrive. At SBEN, we\'re committed to creating pathways for women to achieve financial independence and become leaders in their communities.'
       }
     ],
     author: 'SBEN Team',
-    date: 'July 17, 2024',
-    category: 'Circular Economy',
-    imageUrl: '/lovable-uploads/63c2a3e2-053b-4365-abd3-97afbf384fdc.png',
-    keywords: ['circular economy', 'plastic waste', 'sustainability', 'recycling', 'Kenya'],
-    metaDescription: 'Discover how SBEN Limited is transforming plastic waste management through circular economy principles in Kenya.'
+    date: 'January 15, 2025',
+    category: 'Women Empowerment',
+    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.38 PM.jpeg',
+    keywords: ['women empowerment', 'economic independence', 'savings groups', 'business training', 'Kibera'],
+    metaDescription: 'Learn how SBEN is empowering women in Kibera through economic independence programs and leadership development.'
   },
   {
     id: '2',
-    title: 'Turning Ocean Waste into Opportunity: Innovations in Cleanup',
-    slug: 'ocean-waste-opportunity',
-    excerpt: 'How innovative cleanup technologies and community partnerships are transforming ocean plastic waste into valuable products along Kenya\'s coastline.',
+    title: 'Digital Literacy: Bridging the Technology Gap in Our Community',
+    slug: 'digital-literacy-bridging-gap',
+    excerpt: 'How SBEN\'s digital literacy program is equipping youth with essential computer skills and preparing them for the modern workforce.',
     content: [
       {
         type: 'heading',
-        content: 'The Scale of Ocean Plastic Pollution'
+        content: 'The Digital Divide in Kibera'
       },
       {
         type: 'paragraph',
-        content: 'Marine plastic pollution affects Kenya\'s coastal ecosystems, fisheries, and tourism industry. Every year, millions of tons of plastic waste enter our oceans, with significant portions washing up on our beaches.'
+        content: 'Access to technology and digital skills is crucial for economic opportunity in today\'s world. However, many youth in Kibera lack access to computers and digital education, putting them at a disadvantage in the job market.'
       },
       {
         type: 'heading',
-        content: 'SBEN\'s Ocean Cleanup Initiative'
+        content: 'SBEN\'s Digital Solutions'
       },
       {
         type: 'paragraph',
-        content: 'Our comprehensive ocean cleanup program combines technology, community engagement, and sustainable business practices:'
+        content: 'Our digital literacy program addresses this gap through:'
       },
       {
-        type: 'list',
+        type: 'icon-list',
         items: [
-          'Beach Cleanup Operations: Regular organized cleanups involving local communities, schools, and volunteer groups.',
-          'At-Sea Collection Systems: Partnering with local fishing communities to collect plastic waste during fishing activities.',
-          'Smart Sorting Technology: Mobile sorting units that process collected ocean plastics on-site.'
+          'Computer Skills Training: From basic computer operations to advanced software applications.',
+          'Online Safety Education: Teaching internet safety and responsible digital citizenship.',
+          'Career Preparation: Equipping participants with skills needed for modern workplaces.',
+          'Access to Technology: Providing computer access and internet connectivity for learning.'
         ]
       },
       {
         type: 'stats',
         statsData: [
-          { icon: 'Shield', value: '25+', label: 'Tons Collected from Beaches' },
-          { icon: 'Users', value: '150+', label: 'Coastal Community Jobs' },
-          { icon: 'TrendingUp', value: '500+', label: 'Individuals Trained' }
+          { icon: 'Laptop', value: '80+', label: 'Youth Trained' },
+          { icon: 'Users', value: '15+', label: 'Computers Available' },
+          { icon: 'TrendingUp', value: '60%', label: 'Employment Rate' }
         ]
       },
       {
         type: 'quote',
-        content: 'Join our ocean cleanup efforts by participating in community cleanup events or supporting our sustainable products made from ocean plastic.'
+        content: 'Digital literacy is not just about using computers—it\'s about opening doors to new opportunities and empowering our youth to compete in the global economy.'
       }
     ],
     author: 'SBEN Team',
-    date: 'July 17, 2024',
-    category: 'Ocean Cleanup',
-    imageUrl: '/lovable-uploads/3d9b4ab1-4b93-49d1-a762-4b852a76c4b8.png',
-    keywords: ['ocean cleanup', 'marine plastic', 'coastal communities', 'recycling', 'sustainability'],
-    metaDescription: 'Learn how SBEN\'s ocean cleanup initiative is transforming marine plastic waste into valuable products while empowering coastal communities.'
+    date: 'January 10, 2025',
+    category: 'Digital Literacy',
+    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (3).jpeg',
+    keywords: ['digital literacy', 'computer skills', 'technology education', 'youth development', 'Kibera'],
+    metaDescription: 'Discover how SBEN is bridging the digital divide in Kibera through comprehensive computer skills training and technology education.'
   },
   {
     id: '3',
-    title: 'The Science of Recycling: Converting Plastics into New Materials',
-    slug: 'science-of-recycling',
-    excerpt: 'Deep dive into the technical processes behind converting waste plastics into high-quality recycled materials for various applications.',
+    title: 'Environmental Conservation: Building a Greener Future for Kibera',
+    slug: 'environmental-conservation-greener-future',
+    excerpt: 'Exploring SBEN\'s environmental initiatives that are creating a cleaner, more sustainable community through tree planting and waste management programs.',
     content: [
       {
         type: 'heading',
-        content: 'Types of Plastic and Their Properties'
+        content: 'Environmental Challenges in Urban Communities'
       },
       {
         type: 'paragraph',
-        content: 'Different plastic types require different recycling approaches:'
-      },
-      {
-        type: 'table',
-        tableData: {
-          headers: ['Plastic Type', 'Common Uses', 'Recycling Process', 'New Applications'],
-          rows: [
-            ['PET', 'Bottles, food containers', 'Chemical washing, melting', 'Textiles, carpets, new bottles'],
-            ['HDPE', 'Milk jugs, detergent bottles', 'Shredding, washing, melting', 'Pipes, lumber, playground equipment'],
-            ['PP', 'Food containers, bottle caps', 'Sorting, cleaning, re-melting', 'Automotive parts, textiles']
-          ]
-        }
+        content: 'Urban areas like Kibera face significant environmental challenges, including waste management issues, air pollution, and lack of green spaces. These challenges affect both the environment and community health.'
       },
       {
         type: 'heading',
-        content: 'SBEN\'s Plastic Mapping Tech'
+        content: 'SBEN\'s Green Initiatives'
+      },
+      {
+        type: 'paragraph',
+        content: 'Our environmental conservation program focuses on:'
       },
       {
         type: 'icon-list',
         items: [
-          'Live Waste Tracking: A platform that maps plastic waste accumulation in real time across different regions.',
-          'Recycler Access: Providing recyclers with immediate data on available plastic waste for efficient collection.',
-          'Order Management: Allowing recyclers to place orders for both raw and repurposed materials through the platform.',
-          'Supply Chain Integration: Connecting waste collectors, processors, and buyers in a streamlined ecosystem.'
+          'Tree Planting: Community reforestation projects that create green spaces and improve air quality.',
+          'Waste Management: Recycling programs and waste reduction initiatives that keep our community clean.',
+          'Environmental Education: Raising awareness about conservation and sustainable practices.',
+          'Community Cleanup: Regular community cleanup events that bring people together for environmental action.'
         ]
       },
       {
         type: 'stats',
         statsData: [
-          { icon: 'Zap', value: '60%', label: 'Energy Reduction vs Virgin Plastic' },
-          { icon: 'Shield', value: '80%', label: 'CO₂ Emissions Reduction' },
-          { icon: 'Database', value: '95%', label: 'Water Consumption Reduction' }
+          { icon: 'TreeDeciduous', value: '500+', label: 'Trees Planted' },
+          { icon: 'Users', value: '200+', label: 'Community Members' },
+          { icon: 'TrendingUp', value: '30%', label: 'Waste Reduction' }
         ]
+      },
+      {
+        type: 'quote',
+        content: 'Environmental conservation is about more than just planting trees—it\'s about creating a sustainable future for our children and building a community that values and protects its natural resources.'
       }
     ],
     author: 'SBEN Team',
-    date: 'July 17, 2024',
-    category: 'Technology',
-    imageUrl: '/lovable-uploads/efc70b5b-f93a-41e4-af42-fd0c98e1221d.png',
-    keywords: ['plastic recycling', 'recycling technology', 'circular economy', 'sustainability', 'materials science'],
-    metaDescription: 'Explore the advanced scientific processes SBEN uses to convert waste plastics into high-quality recycled materials.'
+    date: 'January 5, 2025',
+    category: 'Environmental Conservation',
+    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg',
+    keywords: ['environmental conservation', 'tree planting', 'waste management', 'sustainability', 'Kibera'],
+    metaDescription: 'Learn about SBEN\'s environmental conservation efforts in Kibera, including tree planting and waste management initiatives.'
   },
   {
     id: '4',
-    title: 'Recycling Technology in Industry: A Strategic Approach',
-    slug: 'recycling-technology-industry',
-    excerpt: 'How advanced recycling technologies are transforming industrial waste management and creating new business opportunities in Kenya.',
+    title: 'Healthcare Access: Improving Community Wellness in Kibera',
+    slug: 'healthcare-access-community-wellness',
+    excerpt: 'How SBEN\'s healthcare initiatives are making quality medical care accessible to vulnerable community members through outreach programs and health education.',
     content: [
       {
         type: 'heading',
-        content: 'The Industrial Waste Challenge'
+        content: 'Healthcare Challenges in Informal Settlements'
       },
       {
         type: 'paragraph',
-        content: 'Kenyan industries generate thousands of tons of plastic waste annually. Traditional disposal methods are not only environmentally harmful but also represent missed economic opportunities.'
+        content: 'Access to quality healthcare remains a significant challenge in informal settlements like Kibera. Many community members struggle with basic health services, preventive care, and health education.'
       },
       {
         type: 'heading',
-        content: 'Strategic Technology Implementation'
-      },
-      {
-        type: 'list',
-        items: [
-          'Comprehensive waste stream analysis and technology selection based on waste types',
-          'ROI calculations for recycling investments and integration planning with existing operations',
-          'Automated sorting systems for mixed waste streams with AI and machine learning',
-          'Real-time monitoring and reporting systems with scalable processing equipment'
-        ]
-      },
-      {
-        type: 'chart',
-        chartData: {
-          title: 'Industrial Recycling Impact',
-          data: [
-            { name: 'Cost Reduction', value: 70 },
-            { name: 'Revenue Generation', value: 45 },
-            { name: 'Compliance Improvement', value: 90 },
-            { name: 'Sustainability Metrics', value: 85 }
-          ]
-        }
-      },
-      {
-        type: 'quote',
-        content: 'Ready to implement recycling technology in your industry? Contact us for a comprehensive waste assessment and technology recommendation.'
-      }
-    ],
-    author: 'SBEN Team',
-    date: 'July 17, 2024',
-    category: 'Industry Solutions',
-    imageUrl: '/lovable-uploads/90e451d3-3516-43ec-90cc-cb92ba544302.png',
-    keywords: ['industrial recycling', 'recycling technology', 'waste management', 'circular economy', 'sustainability'],
-    metaDescription: 'Discover how SBEN\'s recycling technologies are helping Kenyan industries transform waste into valuable resources.'
-  },
-  {
-    id: '5',
-    title: 'From Plastic Waste to Products: Our Sustainable Development Process',
-    slug: 'plastic-waste-to-products',
-    excerpt: 'A detailed look at SBEN\'s comprehensive process for transforming plastic waste into valuable products while supporting community development.',
-    content: [
-      {
-        type: 'heading',
-        content: 'Five-Stage Transformation Process'
+        content: 'SBEN\'s Health Solutions'
       },
       {
         type: 'paragraph',
-        content: 'At SBEN, we\'ve developed a comprehensive five-stage process that transforms plastic waste into valuable products while creating sustainable economic opportunities for communities across Kenya.'
+        content: 'Our healthcare program addresses these challenges through:'
       },
       {
         type: 'icon-list',
         items: [
-          'Stage 1: Waste Assessment & Collection Design - Partnering with local leaders and understanding existing waste management practices.',
-          'Stage 2: Plastic Mapping Tech - Digital platform that maps plastic waste accumulation in real time and connects recyclers with available materials.',
-          'Stage 3: Product Development & Innovation - Creating market-relevant products from recycled materials through extensive market research.',
-          'Stage 4: Production & Quality Assurance - Scaling production while maintaining quality through manufacturing setup and quality control.',
-          'Stage 5: Community Impact & Support - Ensuring sustainable long-term benefits through employment creation and ongoing support.'
+          'Medical Camps: Free health checkups and basic treatments for community members.',
+          'Health Education: Workshops on nutrition, hygiene, and preventive healthcare.',
+          'Healthcare Access: Assistance in navigating the healthcare system and accessing medical services.',
+          'Community Outreach: Regular health awareness campaigns and screenings.'
         ]
-      },
-      {
-        type: 'heading',
-        content: 'Case Study: Kilifi County Implementation'
       },
       {
         type: 'stats',
         statsData: [
-          { icon: 'Settings', value: '15', label: 'Collection Points Established' },
-          { icon: 'Users', value: '200+', label: 'Community Members Trained' },
-          { icon: 'TrendingUp', value: '25', label: 'Tons Processed Monthly' }
+          { icon: 'Heart', value: '300+', label: 'People Served' },
+          { icon: 'Users', value: '12+', label: 'Medical Camps' },
+          { icon: 'TrendingUp', value: '45%', label: 'Health Awareness' }
         ]
       },
       {
         type: 'quote',
-        content: 'Want to implement our sustainable development process in your community? Contact us to discuss partnership opportunities and technical support.'
+        content: 'Good health is the foundation of a strong community. Through our healthcare initiatives, we\'re working to ensure that every member of our community has access to the care they need.'
       }
     ],
     author: 'SBEN Team',
-    date: 'July 17, 2024',
-    category: 'Development Process',
-    imageUrl: '/lovable-uploads/644f9f2a-9d26-428f-bead-914bf3d45fe7.png',
-    keywords: ['sustainable development', 'plastic recycling', 'community development', 'circular economy', 'product development'],
-    metaDescription: 'Learn about SBEN\'s five-stage process for transforming plastic waste into valuable products while supporting community development.'
+    date: 'December 28, 2024',
+    category: 'Healthcare',
+    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.36 PM (1).jpeg',
+    keywords: ['healthcare access', 'medical camps', 'health education', 'community wellness', 'Kibera'],
+    metaDescription: 'Discover how SBEN is improving healthcare access in Kibera through medical camps, health education, and community outreach programs.'
   },
   {
-    id: '6',
-    title: 'Future of the Blue Economy: Trends in Sustainable Development',
-    slug: 'future-blue-economy-trends',
-    excerpt: 'Exploring emerging trends in sustainable ocean-based economic development and how plastic recycling plays a crucial role in Kenya\'s blue economy future.',
+    id: '5',
+    title: 'Education Support: Building Brighter Futures Through Learning',
+    slug: 'education-support-brighter-futures',
+    excerpt: 'SBEN\'s comprehensive education support program is helping students overcome barriers to learning and achieve their academic goals.',
     content: [
       {
         type: 'heading',
-        content: 'Understanding the Blue Economy'
+        content: 'Educational Barriers in Our Community'
       },
       {
         type: 'paragraph',
-        content: 'The blue economy encompasses all economic activities related to oceans, seas, and coasts, including sustainable fisheries, marine tourism, renewable ocean energy, and ocean waste management.'
+        content: 'Many children in Kibera face significant barriers to education, including lack of school supplies, financial constraints, and limited access to learning resources. These challenges can prevent students from reaching their full potential.'
       },
       {
         type: 'heading',
-        content: 'Current State of Kenya\'s Blue Economy'
+        content: 'SBEN\'s Educational Support'
+      },
+      {
+        type: 'paragraph',
+        content: 'Our education support program provides:'
+      },
+      {
+        type: 'icon-list',
+        items: [
+          'Scholarships: Financial support for deserving students to access quality education.',
+          'Learning Resources: Access to books, materials, and digital resources for enhanced learning.',
+          'Mentorship: Guidance from experienced educators and professionals.',
+          'Academic Support: Tutoring and homework assistance to help students succeed.'
+        ]
       },
       {
         type: 'stats',
         statsData: [
-          { icon: 'DollarSign', value: '$1B+', label: 'Annual Tourism Revenue' },
-          { icon: 'Users', value: '500K+', label: 'Livelihoods Supported by Fisheries' },
-          { icon: 'TrendingUp', value: '95%', label: 'International Trade via Maritime' }
+          { icon: 'GraduationCap', value: '100+', label: 'Students Supported' },
+          { icon: 'BookOpen', value: '500+', label: 'Books Distributed' },
+          { icon: 'TrendingUp', value: '85%', label: 'Academic Improvement' }
         ]
-      },
-      {
-        type: 'heading',
-        content: 'Emerging Trends in Blue Economy Development'
-      },
-      {
-        type: 'list',
-        items: [
-          'Technology Integration: IoT sensors for monitoring ocean health and AI-powered waste collection optimization',
-          'Circular Economy Models: Zero-waste coastal tourism initiatives and closed-loop aquaculture systems',
-          'Climate Resilience: Blue carbon projects and ecosystem-based adaptation strategies',
-          'Policy and Governance: Extended producer responsibility regulations and marine protected area expansion'
-        ]
-      },
-      {
-        type: 'chart',
-        chartData: {
-          title: 'Blue Economy Growth Sectors',
-          data: [
-            { name: 'Sustainable Tourism', value: 35 },
-            { name: 'Ocean Technology', value: 25 },
-            { name: 'Waste Management', value: 20 },
-            { name: 'Renewable Energy', value: 20 }
-          ]
-        }
       },
       {
         type: 'quote',
-        content: 'Ready to contribute to Kenya\'s blue economy future? Partner with SBEN to develop sustainable solutions that protect our marine resources while creating economic opportunities.'
+        content: 'Education is the most powerful tool for breaking the cycle of poverty. Through our support programs, we\'re helping students build the foundation for successful futures.'
       }
     ],
     author: 'SBEN Team',
-    date: 'July 17, 2024',
-    category: 'Blue Economy',
-    imageUrl: '/lovable-uploads/faed02d3-6f87-4c72-bb77-520aa4c1182e.png',
-    keywords: ['blue economy', 'sustainable development', 'ocean conservation', 'marine pollution', 'circular economy'],
-    metaDescription: 'Explore the future of Kenya\'s blue economy and how SBEN\'s plastic recycling initiatives support sustainable ocean-based development.'
+    date: 'December 20, 2024',
+    category: 'Education',
+    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.36 PM.jpeg',
+    keywords: ['education support', 'scholarships', 'learning resources', 'academic success', 'Kibera'],
+    metaDescription: 'Learn how SBEN is supporting education in Kibera through scholarships, learning resources, and mentorship programs.'
+  },
+  {
+    id: '6',
+    title: 'Youth Mentorship: Developing the Next Generation of Leaders',
+    slug: 'youth-mentorship-next-generation-leaders',
+    excerpt: 'SBEN\'s youth mentorship program is cultivating leadership skills and providing guidance to help young people become agents of positive change in their communities.',
+    content: [
+      {
+        type: 'heading',
+        content: 'The Need for Youth Leadership Development'
+      },
+      {
+        type: 'paragraph',
+        content: 'Young people in Kibera have incredible potential to drive positive change, but they often lack the guidance, skills, and opportunities needed to become effective leaders. Our mentorship program addresses this gap.'
+      },
+      {
+        type: 'heading',
+        content: 'Our Mentorship Approach'
+      },
+      {
+        type: 'paragraph',
+        content: 'The SBEN youth mentorship program focuses on:'
+      },
+      {
+        type: 'icon-list',
+        items: [
+          'Leadership Training: Developing essential leadership skills and confidence.',
+          'Career Guidance: Helping youth identify and pursue their career goals.',
+          'Community Engagement: Encouraging active participation in community development.',
+          'Personal Development: Building self-esteem, communication skills, and resilience.'
+        ]
+      },
+      {
+        type: 'stats',
+        statsData: [
+          { icon: 'Users', value: '75+', label: 'Youth Mentored' },
+          { icon: 'Target', value: '20+', label: 'Leadership Projects' },
+          { icon: 'TrendingUp', value: '90%', label: 'Confidence Boost' }
+        ]
+      },
+      {
+        type: 'quote',
+        content: 'Our youth are not just the leaders of tomorrow—they are the leaders of today. Through mentorship, we\'re helping them realize their potential and make a difference in their communities.'
+      }
+    ],
+    author: 'SBEN Team',
+    date: 'December 15, 2024',
+    category: 'Youth Development',
+    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.27.50 PM (1).jpeg',
+    keywords: ['youth mentorship', 'leadership development', 'career guidance', 'community engagement', 'Kibera'],
+    metaDescription: 'Discover how SBEN\'s youth mentorship program is developing the next generation of leaders in Kibera through comprehensive leadership training and guidance.'
   }
 ];

@@ -1,20 +1,13 @@
 
 import PageLayout from '@/components/PageLayout';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Calendar, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
-import BlogPostCard from '@/components/BlogPostCard';
 import PageHero from '@/components/PageHero';
 import { blogPosts } from '@/data/blogPosts';
+import { motion } from 'framer-motion';
 
 const Blog = () => {
-  // Get the newest blog post for the featured post section (the new post with id '6')
-  const featuredPost = blogPosts.find(post => post.id === '6') || blogPosts[0];
-  // Get the rest of the blog posts for the grid section
-  const otherPosts = blogPosts.filter(post => post.id !== featuredPost?.id);
-  
   return (
     <PageLayout>
       <SEO 
@@ -32,63 +25,49 @@ const Blog = () => {
       
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredPost && (
-            <Link to={`/blog/${featuredPost.slug}`} className="col-span-1 md:col-span-2 lg:col-span-3">
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
-                <div className="grid md:grid-cols-2 h-full">
-                  <div 
-                    className="bg-cover bg-center h-64 md:h-full p-8 flex items-center justify-center"
-                    style={{ 
-                      backgroundImage: `url('${featuredPost.imageUrl}')`,
-                      backgroundSize: 'cover',
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: 'center'
-                    }}
-                  >
-                    <div className="text-white text-center bg-black/30 backdrop-blur-sm p-4 rounded-lg">
-                      <span className="px-3 py-1 bg-white/10 rounded-full text-sm font-medium inline-block mb-4">Featured</span>
-                      <h3 className="text-2xl md:text-3xl font-bold">{featuredPost.title}</h3>
-                    </div>
-                  </div>
-                  <CardContent className="p-8">
-                    <p className="text-gray-500 text-sm mb-2">Published: {featuredPost.date}</p>
-                    <p className="text-gray-700 mb-6">
-                      {featuredPost.excerpt}
-                    </p>
-                    <Button variant="outline" className="group">
-                      Read more 
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </CardContent>
-                </div>
-              </Card>
-            </Link>
-          )}
-          
-          {/* Other blog posts */}
-          {otherPosts.map((post) => (
-            <BlogPostCard 
+          {blogPosts.map((post, index) => (
+            <motion.article
               key={post.id}
-              title={post.title}
-              excerpt={post.excerpt}
-              imageUrl={post.imageUrl || '/lovable-uploads/48ecf6e2-5a98-4a9d-af6f-ae2265cd4098.png'}
-              date={post.date}
-              slug={post.slug}
-              category={post.category}
-            />
-          ))}
-          
-          {/* If there are fewer than 3 published posts, add placeholders */}
-          {blogPosts.length < 4 && Array.from({ length: Math.max(0, 4 - blogPosts.length) }).map((_, index) => (
-            <BlogPostCard 
-              key={`placeholder-${index}`}
-              title="Upcoming article"
-              excerpt="Stay tuned for more exciting articles about plastic recycling and circular economy solutions."
-              imageUrl={index % 2 === 0 ? "/lovable-uploads/6b0637e9-4a7b-40d0-b219-c8b7f879f93e.png" : "/lovable-uploads/700e27d7-0513-4bfa-8ac4-f7fd6087594c.png"}
-              date="Coming soon"
-              slug="#"
-              category="Upcoming"
-            />
+              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <div className="aspect-video overflow-hidden">
+                <img
+                  src={post.imageUrl || '/gallery/placeholder.svg'}
+                  alt={post.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center text-sm text-gray-500 mb-3">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  <span>{post.date}</span>
+                  <span className="mx-2">•</span>
+                  <User className="w-4 h-4 mr-2" />
+                  <span>{post.author}</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                  {post.title}
+                </h3>
+                
+                <p className="text-gray-600 mb-4 line-clamp-3">
+                  {post.excerpt}
+                </p>
+                
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="inline-flex items-center text-empowerment-500 hover:text-empowerment-600 font-medium transition-colors group"
+                >
+                  Read More
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
