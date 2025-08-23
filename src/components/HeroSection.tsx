@@ -16,7 +16,7 @@ const HeroSection = ({
   title,
   subtitle,
   backgroundImage,
-  backgroundGradient = 'from-primary-500 to-gray-900',
+  backgroundGradient = 'from-[#000080]/30 via-[#000080]/25 to-white/20',
   children,
   className = '',
   textColor = 'white',

@@ -51,7 +51,8 @@ const BlogPostDetail = () => {
               className="absolute inset-0 w-full h-full object-cover filter grayscale"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-500/80 via-primary-600/60 to-black/80"></div>
+          {/* Very faded navy blue overlay - matching homepage style */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/30 via-[#000080]/25 to-white/20"></div>
           
           <div className="banner-overlay">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center justify-start md:justify-center">

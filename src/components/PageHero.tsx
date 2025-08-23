@@ -69,7 +69,8 @@ const PageHero = ({
             alt="Community empowerment initiatives"
             className="w-full h-full object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-secondary-500/90 via-secondary-500/80 to-white"></div>
+          {/* Very faded navy blue overlay - matching homepage style */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/30 via-[#000080]/25 to-white/20"></div>
         </div>
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

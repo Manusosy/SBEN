@@ -181,8 +181,14 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-secondary-400" />
-                <a href="tel:+254700000000" className="text-gray-300 hover:text-secondary-400 transition-colors text-sm">
-                  +254 700 000 000
+                <a href="tel:+254795549619" className="text-gray-300 hover:text-secondary-400 transition-colors text-sm">
+                  +254 795 549619
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-secondary-400" />
+                <a href="mailto:info@shinebridgeempowermentnetwork.org" className="text-gray-300 hover:text-secondary-400 transition-colors text-sm">
+                  info@shinebridgeempowermentnetwork.org
                 </a>
               </div>
             </div>

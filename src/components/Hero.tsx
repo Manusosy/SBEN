@@ -15,11 +15,11 @@ const Hero = () => {
     "/gallery/WhatsApp Image 2025-08-23 at 12.16.26 PM.jpeg"
   ];
 
-  // Auto-advance images every 5 seconds
+  // Auto-advance images every 8 seconds (slowed down from 5 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
@@ -39,7 +39,7 @@ const Hero = () => {
                 scale: index === currentImageIndex ? 1 : 1.1,
               }}
               transition={{
-                duration: 2,
+                duration: 3, // Increased from 2 to 3 seconds for slower transitions
                 ease: "easeInOut",
               }}
             >
@@ -48,7 +48,8 @@ const Hero = () => {
                 alt={`Hero image ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-white"></div>
+              {/* Very faded navy blue overlay - using rgba with very low opacity */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/30 via-[#000080]/25 to-white/20"></div>
             </motion.div>
           ))}
         </div>
@@ -65,7 +66,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg"
             >
               Empowering Communities,
               <br />
@@ -76,7 +77,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg md:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto text-gray-100 leading-relaxed"
+              className="text-lg md:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto text-white leading-relaxed drop-shadow-lg"
             >
               Join us in our mission to create sustainable change through education, 
               healthcare, and community development in Kibera and beyond.
@@ -90,16 +91,16 @@ const Hero = () => {
             >
               <Link
                 to="/get-involved"
-                className="inline-flex items-center px-8 py-4 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="inline-flex items-center px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all duration-300 text-base font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Get Involved
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
               <Link
-                to="/donate"
-                className="inline-flex items-center px-8 py-4 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl hover:shadow-secondary-500/20"
+                to="/about"
+                className="inline-flex items-center px-6 py-3 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 transition-all duration-300 text-base font-semibold shadow-lg hover:shadow-xl hover:shadow-secondary-500/20"
               >
-                Donate Now
+                Learn More
               </Link>
             </motion.div>
           </motion.div>
@@ -122,18 +123,18 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Feature Cards - Clean and professional */}
+      {/* Feature Cards - Seamlessly integrated without visible separator */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.0 }}
-        className="relative z-20 -mt-20 bg-white border-t border-gray-200"
+        className="relative z-20 bg-white"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
               whileHover={{ y: -5 }}
-              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300"
+              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Community Impact</h3>
               <p className="text-gray-600 leading-relaxed">Supporting over 500 families in Kibera through our various programs and initiatives</p>
@@ -141,7 +142,7 @@ const Hero = () => {
 
             <motion.div
               whileHover={{ y: -5 }}
-              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300"
+              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Education First</h3>
               <p className="text-gray-600 leading-relaxed">Providing quality education and digital literacy skills to empower our youth</p>
@@ -149,7 +150,7 @@ const Hero = () => {
 
             <motion.div
               whileHover={{ y: -5 }}
-              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300"
+              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Women Empowerment</h3>
               <p className="text-gray-600 leading-relaxed">Building economic independence through skills training and community support</p>
