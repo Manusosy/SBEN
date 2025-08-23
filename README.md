@@ -68,7 +68,7 @@ src/
 For more information about SBEN and our initiatives:
 
 - **Location**: Kibera, Nairobi, Kenya
-- **Email**: info@sben.org
+- **Email**: info@shinebridgeempowermentnetwork.org
 
 ---
 
