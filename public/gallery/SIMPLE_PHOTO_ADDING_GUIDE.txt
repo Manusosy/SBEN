@@ -1,0 +1,54 @@
+SIMPLE PHOTO ADDING GUIDE
+=========================
+
+✅ WHAT'S NOW WORKING:
+- Pure image grid (no cards, no text)
+- Click any image to view full screen
+- Filter by category to see only images from that folder
+- Images automatically load from subfolders
+
+📁 HOW TO ADD PHOTOS:
+
+STEP 1: Add photos to subfolders
+- Put education photos in: public/gallery/education/
+- Put healthcare photos in: public/gallery/healthcare/
+- Put community photos in: public/gallery/community/
+- etc.
+
+STEP 2: Update the code (only one place!)
+In src/pages/Gallery.tsx, find the getCategoryImages function and add your photo paths:
+
+EXAMPLE:
+```javascript
+education: [
+  "/gallery/education/student-workshop-1.jpg",
+  "/gallery/education/classroom-activity-2.jpg",
+  "/gallery/education/training-session-3.jpg"
+],
+healthcare: [
+  "/gallery/healthcare/clinic-opening.jpg",
+  "/gallery/healthcare/health-workshop.jpg"
+],
+community: [
+  "/gallery/community/meeting-1.jpg",
+  "/gallery/community/event-2.jpg"
+]
+```
+
+STEP 3: That's it!
+- Photos automatically appear in the grid
+- Filter by category to see only photos from that folder
+- Click any image to view full screen
+
+🎯 CURRENT PHOTO DISTRIBUTION:
+- Education: 3 photos
+- Healthcare: 2 photos  
+- Women Empowerment: 1 photo
+- Digital Literacy: 1 photo
+- Environmental: 1 photo
+- Community: 7 photos
+- Volunteer: 1 photo
+- Partnership: 0 photos
+- Events: 0 photos
+
+💡 TIP: Just copy the existing pattern and add your new photo paths! 

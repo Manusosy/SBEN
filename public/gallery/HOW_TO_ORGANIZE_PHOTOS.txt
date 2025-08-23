@@ -1,0 +1,47 @@
+HOW TO ORGANIZE YOUR PHOTOS
+============================
+
+You already have photos in the main gallery folder. Here's how to organize them:
+
+CURRENT PHOTOS (already in gallery folder):
+- WhatsApp Image 2025-08-23 at 12.42.38 PM.jpeg
+- WhatsApp Image 2025-08-23 at 12.42.37 PM (3).jpeg
+- WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg
+- WhatsApp Image 2025-08-23 at 12.42.36 PM.jpeg
+- And many more...
+
+STEP 1: ORGANIZE PHOTOS INTO SUBFOLDERS
+Move your photos into the appropriate subfolders:
+
+education/          - Photos of students, classrooms, workshops, training
+healthcare/         - Photos of medical activities, clinics, health workshops
+women-empowerment/  - Photos of women's programs, training, meetings
+digital-literacy/   - Photos of computer training, digital skills
+environmental/      - Photos of tree planting, cleanup, environmental work
+community/          - Photos of community meetings, gatherings, activities
+volunteer/          - Photos of volunteer activities, helping others
+partnership/        - Photos of partnership meetings, collaborations
+events/            - Photos of celebrations, special events, ceremonies
+
+STEP 2: UPDATE THE GALLERY CODE
+In src/pages/Gallery.tsx, update the galleryImages array with your organized photos:
+
+EXAMPLE:
+{
+  id: 1,
+  src: "/gallery/education/student-workshop-2024.jpg",
+  alt: "Students in workshop",
+  title: "Student Workshop 2024",
+  description: "Students learning new skills",
+  category: "education"
+}
+
+STEP 3: RENAME PHOTOS (Optional)
+You can rename your photos to be more descriptive:
+- "WhatsApp Image 2025-08-23 at 12.42.38 PM.jpeg" → "community-meeting-2024.jpg"
+- "WhatsApp Image 2025-08-23 at 12.42.37 PM (3).jpeg" → "education-workshop-2024.jpg"
+
+STEP 4: ADD MORE PHOTOS
+As you get more photos, just add them to the appropriate subfolder and update the galleryImages array.
+
+The gallery will automatically filter photos by category and allow searching! 
