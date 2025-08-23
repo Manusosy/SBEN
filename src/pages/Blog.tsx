@@ -20,7 +20,7 @@ const Blog = () => {
       <PageHero
         title="Latest News & Updates"
         description="Stay updated with our latest news, stories, and community initiatives"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.27.49 PM.jpeg"
       />
       
       <div className="container mx-auto px-4 py-16">

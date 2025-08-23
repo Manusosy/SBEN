@@ -1,149 +1,165 @@
-import { ArrowRight, Users, BookOpen, Star, Target, Heart } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ArrowRight, Users, Lightbulb, Heart } from "lucide-react";
 
 const Hero = () => {
-  const isMobile = useIsMobile();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // 5 images for the slider
+  const heroImages = [
+    "/gallery/WhatsApp Image 2025-08-23 at 12.42.38 PM.jpeg",
+    "/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (3).jpeg",
+    "/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg",
+    "/gallery/WhatsApp Image 2025-08-23 at 12.27.50 PM.jpeg",
+    "/gallery/WhatsApp Image 2025-08-23 at 12.16.26 PM.jpeg"
+  ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-        duration: 0.5
-      }
-    }
-  };
+  // Auto-advance images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
 
-  const itemVariants = {
-    hidden: {
-      y: 20,
-      opacity: 0
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  };
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   return (
-    <motion.div 
-      className="relative w-full"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[600px] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
-            alt="Community empowerment initiatives"
-            className="w-full h-full object-cover opacity-80"
+    <section className="relative h-screen overflow-hidden">
+      {/* Image Slider Background */}
+      <div className="absolute inset-0">
+        {heroImages.map((image, index) => (
+          <motion.div
+            key={image}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{
+              opacity: index === currentImageIndex ? 1 : 0,
+              scale: index === currentImageIndex ? 1 : 1.1,
+            }}
+            transition={{
+              duration: 2,
+              ease: "easeInOut",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/40" />
+            <img
+              src={image}
+              alt={`Hero image ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Content Overlay */}
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="text-center text-white px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+          >
+            Empowering Communities,
+            <br />
+            <span className="text-secondary-300">Transforming Lives</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg md:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto text-gray-100 leading-relaxed"
+          >
+            Join us in our mission to create sustainable change through education, 
+            healthcare, and community development in Kibera and beyond.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <Link
+              to="/get-involved"
+              className="inline-flex items-center px-8 py-4 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              Get Involved
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+            <Link
+              to="/donate"
+              className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300 text-lg font-semibold"
+            >
+              Donate Now
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Image Indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImageIndex(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentImageIndex
+                ? "bg-white scale-125"
+                : "bg-white/50 hover:bg-white/75"
+            }`}
+            aria-label={`Go to image ${index + 1}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-500/90 via-primary-500/80 to-white"></div>
-        </div>
+        ))}
+      </div>
 
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div className="w-full" variants={itemVariants}>
-            <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-white"
-              variants={itemVariants}
+      {/* Feature Cards */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="absolute bottom-0 left-0 right-0 z-20 bg-white/95 backdrop-blur-sm border-t border-gray-200"
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="text-center group"
             >
-              Empowering Communities, Transforming Lives
-            </motion.h1>
-            <motion.p 
-              className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed text-gray-100"
-              variants={itemVariants}
-            >
-              Building bridges to dignity, equity, and sustainable development through education, healthcare, and empowerment.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              variants={itemVariants}
-            >
-              <Link to="/get-involved" className="w-full sm:w-auto">
-                <button 
-                  className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 bg-empowerment-500 text-white rounded-lg hover:bg-empowerment-600 transition-all shadow-lg hover:shadow-xl hover:shadow-empowerment-500/20 flex items-center justify-center group text-sm sm:text-base font-medium"
-                >
-                  Get Involved
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
-
-              <Link
-                to="/programs"
-                className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 transition-all shadow-lg hover:shadow-xl hover:shadow-secondary-500/20 flex items-center justify-center group text-sm sm:text-base font-medium"
-              >
-                Learn More
-                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
+                <Users className="w-8 h-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Community Impact</h3>
+              <p className="text-gray-600">Supporting over 500 families in Kibera through our various programs</p>
             </motion.div>
-          </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="text-center group"
+            >
+              <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary-200 transition-colors">
+                <Lightbulb className="w-8 h-8 text-secondary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Education First</h3>
+              <p className="text-gray-600">Providing quality education and digital literacy skills to youth</p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="text-center group"
+            >
+              <div className="w-16 h-16 bg-empowerment-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-empowerment-200 transition-colors">
+                <Heart className="w-8 h-8 text-empowerment-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Women Empowerment</h3>
+              <p className="text-gray-600">Building economic independence through skills training and support</p>
+            </motion.div>
+          </div>
         </div>
-      </div>
-
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 mx-auto">
-        <motion.div 
-          className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.6 }}
-        >
-          <motion.div 
-            className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-gray-100 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-            variants={itemVariants}
-          >
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-secondary-500/10 flex items-center justify-center rounded-lg text-secondary-500 mb-2 md:mb-3">
-              <Users className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Women Empowerment</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Economic empowerment through savings groups, entrepreneurship training, and leadership development.</p>
-          </motion.div>
-
-          <motion.div 
-            className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-gray-100 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-            variants={itemVariants}
-          >
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-accent-500/10 flex items-center justify-center rounded-lg text-accent-500 mb-2 md:mb-3">
-              <BookOpen className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Youth Development</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Mentorship programs, digital literacy training, and leadership development for youth.</p>
-          </motion.div>
-
-          <motion.div 
-            className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-gray-100 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-            variants={itemVariants}
-          >
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-success-500/10 flex items-center justify-center rounded-lg text-success-500 mb-2 md:mb-3">
-              <Heart className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Healthcare & Wellness</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Improving access to healthcare services and promoting community wellness programs.</p>
-          </motion.div>
-        </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </section>
   );
 };
 

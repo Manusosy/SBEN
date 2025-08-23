@@ -51,7 +51,7 @@ const Contact = () => {
         <PageHero
           title="Get in Touch"
           description="We'd love to hear from you. Send us a message and we'll respond as soon as possible."
-          imagePath="/lovable-uploads/contact-hero.jpg"
+          imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.27.50 PM.jpeg"
         />
 
         <div className="container mx-auto px-4 py-16">

@@ -204,7 +204,7 @@ const GetInvolved = () => {
       <PageHero
         title="Get Involved"
         description="Join us in empowering communities and transforming lives in Kibera. Whether you want to volunteer your time, support our mission financially, or partner with us, there are many ways to make a difference."
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.14.19 PM.jpeg"
       />
 
       {/* Impact Statistics Section */}

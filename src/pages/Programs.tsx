@@ -16,12 +16,11 @@ export default function Programs() {
         keywords={['women empowerment', 'youth development', 'gender equality', 'digital literacy', 'education support']}
       />
 
-      <div className="text-center py-16 bg-white">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Programs</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Comprehensive initiatives designed to create lasting positive change in our community
-        </p>
-      </div>
+      <PageHero
+        title="Our Programs"
+        description="Comprehensive initiatives designed to create lasting positive change in our community"
+        imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (3).jpeg"
+      />
 
       {/* Programs Section */}
       <section className="py-16 bg-white">
