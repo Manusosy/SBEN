@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, Lightbulb, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -48,7 +48,7 @@ const Hero = () => {
                 alt={`Hero image ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-secondary-500/90 via-secondary-500/80 to-white"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-white"></div>
             </motion.div>
           ))}
         </div>
@@ -122,44 +122,35 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Feature Cards - Professional and clean */}
+      {/* Feature Cards - Clean and professional */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.0 }}
-        className="relative z-20 -mt-20 bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-2xl"
+        className="relative z-20 -mt-20 bg-white border-t border-gray-200"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
               whileHover={{ y: -5 }}
-              className="text-center group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-100 transition-colors">
-                <Users className="w-6 h-6 text-primary-600" />
-              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Community Impact</h3>
               <p className="text-gray-600 leading-relaxed">Supporting over 500 families in Kibera through our various programs and initiatives</p>
             </motion.div>
 
             <motion.div
               whileHover={{ y: -5 }}
-              className="text-center group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-secondary-50 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary-100 transition-colors">
-                <Lightbulb className="w-6 h-6 text-secondary-600" />
-              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Education First</h3>
               <p className="text-gray-600 leading-relaxed">Providing quality education and digital literacy skills to empower our youth</p>
             </motion.div>
 
             <motion.div
               whileHover={{ y: -5 }}
-              className="text-center group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="text-center group bg-white rounded-xl p-6 border border-transparent hover:border-gray-200 transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-empowerment-50 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-empowerment-100 transition-colors">
-                <Heart className="w-6 h-6 text-empowerment-600" />
-              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Women Empowerment</h3>
               <p className="text-gray-600 leading-relaxed">Building economic independence through skills training and community support</p>
             </motion.div>
