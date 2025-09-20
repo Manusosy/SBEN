@@ -26,6 +26,8 @@ const EMAILJS_SERVICE_ID = "service_i3h66xg";
 const EMAILJS_TEMPLATE_ID = "template_fgq53nh"; // Updated to the correct template ID
 const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
 
+// Note: EmailJS template must be configured to send emails to info@shinebridgeempowermentnetwork.org
+
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStartTime] = useState<number>(Date.now()); // Track when form was opened
@@ -82,7 +84,8 @@ const ContactForm = () => {
         from_name: emailData.name,
         from_email: emailData.email,
         message: emailData.message,
-        to_name: 'Tebari Team', // Adding recipient name parameter
+        to_name: 'SBEN Team', // Updated recipient name
+        to_email: 'info@shinebridgeempowermentnetwork.org', // Explicit recipient email
         reply_to: emailData.email // Keeping reply_to for compatibility
       };
       

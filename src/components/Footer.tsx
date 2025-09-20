@@ -10,6 +10,11 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // EmailJS configuration for newsletter - using same service as contact forms
+  const EMAILJS_SERVICE_ID = "service_i3h66xg";
+  const EMAILJS_TEMPLATE_ID = "template_fgq53nh"; // You may want to create a separate template for newsletter
+  const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
+
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
@@ -17,17 +22,23 @@ const Footer = () => {
     setIsSubmitting(true);
     try {
       await emailjs.send(
-        'service_your_service_id',
-        'template_newsletter',
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
-          email: email,
-          message: `Newsletter subscription from: ${email}`,
+          from_name: 'Newsletter Subscriber',
+          from_email: email,
+          message: `Newsletter subscription request from: ${email}`,
+          to_name: 'SBEN Team',
+          to_email: 'info@shinebridgeempowermentnetwork.org',
+          subject: 'Newsletter Subscription',
+          reply_to: email
         },
-        'your_public_key'
+        EMAILJS_PUBLIC_KEY
       );
       toast.success("Thank you for subscribing to our newsletter!");
       setEmail("");
     } catch (error) {
+      console.error('Newsletter subscription error:', error);
       toast.error("Failed to subscribe. Please try again.");
     }
     setIsSubmitting(false);
