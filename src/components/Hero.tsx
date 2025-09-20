@@ -48,8 +48,8 @@ const Hero = () => {
                 alt={`Hero image ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              {/* Very faded navy blue overlay - using rgba with very low opacity */}
-              <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/30 via-[#000080]/25 to-white/20"></div>
+              {/* Darker navy overlay (pure blue gradient, no black) for improved text contrast */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/60 via-[#000080]/50 to-[#000080]/30"></div>
             </motion.div>
           ))}
         </div>

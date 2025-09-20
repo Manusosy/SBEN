@@ -27,6 +27,16 @@ const WomenEmpowerment = () => {
       icon: <LineChart className="w-8 h-8 text-primary" />,
       title: "Financial Training",
       description: "Financial literacy and management education"
+    },
+    {
+      icon: <Users className="w-8 h-8 text-primary" />,
+      title: "Youth Empowerment",
+      description: "Mentorship, skills training, and leadership opportunities for young women and girls"
+    },
+    {
+      icon: <Award className="w-8 h-8 text-primary" />,
+      title: "Advocacy",
+      description: "We advocate for Sexual and Reproductive Health and Rights"
     }
   ];
 
@@ -60,7 +70,7 @@ const WomenEmpowerment = () => {
       <PageHero
         title="Women Empowerment"
         description="Supporting women through savings groups, business skills training, and leadership development"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.33 PM.jpeg"
       />
 
       {/* Initiatives */}

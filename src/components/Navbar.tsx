@@ -59,9 +59,7 @@ const Navbar = () => {
   return (
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled 
-        ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200" 
-        : "bg-transparent"
+      "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
     )}>
       <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="flex items-center justify-between h-16">
@@ -78,16 +76,16 @@ const Navbar = () => {
           
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex flex-grow justify-center">
-            <NavigationMenu className={cn(isScrolled ? "" : "text-white")}>
+            <NavigationMenu className={cn("")}>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}> 
                     <Link to="/">Home</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={cn(isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                  <NavigationMenuTrigger className={cn("text-gray-700 hover:text-gray-900")}> 
                     About Us
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -123,13 +121,13 @@ const Navbar = () => {
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}> 
                     <Link to="/programs">Programs</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={cn(isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                  <NavigationMenuTrigger className={cn("text-gray-700 hover:text-gray-900")}> 
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -191,7 +189,7 @@ const Navbar = () => {
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}> 
                     <Link to="/contact">Contact Us</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -215,9 +213,7 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className={cn(
                   "p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors",
-                  isScrolled
-                    ? "text-gray-700 hover:bg-gray-100 focus:ring-gray-500"
-                    : "text-white hover:bg-white/10 focus:ring-white"
+                  "text-gray-700 hover:bg-gray-100 focus:ring-gray-500"
                 )}
                 aria-label="Toggle mobile menu"
               >

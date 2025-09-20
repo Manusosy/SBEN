@@ -68,6 +68,14 @@ export const programs = [
       {
         title: "Leadership Programs",
         description: "Developing women leaders in the community"
+      },
+      {
+        title: "Youth Empowerment",
+        description: "Mentorship, skills training, and leadership opportunities for young women and girls"
+      },
+      {
+        title: "Advocacy",
+        description: "We advocate for Sexual and Reproductive Health and Rights"
       }
     ]
   },
