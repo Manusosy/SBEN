@@ -17,7 +17,7 @@ const Contact = () => {
         <PageHero
           title="Get in Touch"
           description="Building bridges to dignity, equity, and sustainable development through education, healthcare, and empowerment."
-          imagePath="/gallery/community/WhatsApp Image 2025-08-23 at 12.13.44 PM (2).jpeg"
+          imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.13.44 PM (2).jpeg"
         />
 
         <ContactForm />
