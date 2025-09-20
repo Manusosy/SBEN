@@ -1,0 +1,15 @@
+[1mdiff --git a/src/components/Hero.tsx b/src/components/Hero.tsx[m
+[1mindex e862ada..8d3e019 100644[m
+[1m--- a/src/components/Hero.tsx[m
+[1m+++ b/src/components/Hero.tsx[m
+[36m@@ -48,8 +48,8 @@[m [mconst Hero = () => {[m
+                 alt={`Hero image ${index + 1}`}[m
+                 className="w-full h-full object-cover"[m
+               />[m
+[31m-              {/* Very faded navy blue overlay - using rgba with very low opacity */}[m
+[31m-              <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/30 via-[#000080]/25 to-white/20"></div>[m
+[32m+[m[32m              {/* Darker navy overlay (pure blue gradient, no black) for improved text contrast */}[m
+[32m+[m[32m              <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/60 via-[#000080]/50 to-[#000080]/30"></div>[m
+             </motion.div>[m
+           ))}[m
+         </div>[m
