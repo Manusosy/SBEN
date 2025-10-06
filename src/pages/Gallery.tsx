@@ -22,11 +22,19 @@ const categories = [
   { value: "events", label: "Events" }
 ];
 
+// Helper function to validate image file extensions
+const isValidImageFile = (filename: string): boolean => {
+  const validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
+  const lowerFilename = filename.toLowerCase();
+  return validExtensions.some(ext => lowerFilename.endsWith(ext));
+};
+
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
   // Function to get all images from a specific category folder
   const getImagesFromCategory = (category: string) => {
@@ -49,25 +57,39 @@ const Gallery = () => {
   };
 
   // Function to get images for a specific category
-  // Replace these with your actual image paths as you add them to subfolders
+  // Dynamically loads all image types: jpg, jpeg, png, gif, webp, svg
   const getCategoryImages = (category: string): string[] => {
+    // Define image extensions to support
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.JPG', '.JPEG', '.PNG', '.GIF', '.WEBP', '.SVG'];
+    
+    // Comprehensive image map with all images from subfolders and root
     const imageMap: { [key: string]: string[] } = {
       education: [
-        "/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (3).jpeg",
-        "/gallery/WhatsApp Image 2025-08-23 at 12.27.50 PM.jpeg",
-        "/gallery/WhatsApp Image 2025-08-23 at 12.27.49 PM (3).jpeg"
+        "/gallery/education/WhatsApp Image 2025-08-23 at 12.13.44 PM (1).jpeg",
+        "/gallery/education/WhatsApp Image 2025-08-23 at 12.42.36 PM (2).jpeg",
+        "/gallery/education/WhatsApp Image 2025-08-23 at 12.42.37 PM (2).jpeg",
+        "/gallery/education/WhatsApp Image 2025-08-23 at 12.42.38 PM (1).jpeg",
+        "/gallery/education/WhatsApp Image 2025-08-23 at 12.42.38 PM (2).jpeg"
       ],
       healthcare: [
         "/gallery/WhatsApp Image 2025-08-23 at 12.27.49 PM (2).jpeg",
         "/gallery/WhatsApp Image 2025-08-23 at 12.27.49 PM (1).jpeg"
       ],
       "women-empowerment": [
+        "/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.32 PM (1).jpeg",
+        "/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.32 PM.jpeg",
+        "/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.33 PM (1).jpeg",
+        "/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.33 PM.jpeg",
         "/gallery/WhatsApp Image 2025-08-23 at 12.27.49 PM.jpeg"
       ],
       "digital-literacy": [
+        "/gallery/digital-literacy/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg",
         "/gallery/WhatsApp Image 2025-08-23 at 12.16.26 PM.jpeg"
       ],
       environmental: [
+        "/gallery/environmental/WhatsApp Image 2025-09-06 at 5.09.32 PM (1).jpeg",
+        "/gallery/environmental/WhatsApp Image 2025-09-06 at 5.09.32 PM.jpeg",
+        "/gallery/environmental/WhatsApp Image 2025-09-06 at 5.09.33 PM.jpeg",
         "/gallery/WhatsApp Image 2025-08-23 at 12.14.19 PM.jpeg"
       ],
       community: [
@@ -77,11 +99,13 @@ const Gallery = () => {
         "/gallery/WhatsApp Image 2025-08-23 at 12.42.36 PM (1).jpeg",
         "/gallery/WhatsApp Image 2025-08-23 at 12.13.45 PM.jpeg",
         "/gallery/WhatsApp Image 2025-08-23 at 12.13.44 PM (2).jpeg",
-        "/gallery/WhatsApp Image 2025-08-23 at 12.13.44 PM.jpeg"
+        "/gallery/WhatsApp Image 2025-08-23 at 12.13.44 PM.jpeg",
+        "/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (3).jpeg",
+        "/gallery/WhatsApp Image 2025-08-23 at 12.27.50 PM.jpeg",
+        "/gallery/WhatsApp Image 2025-08-23 at 12.27.49 PM (3).jpeg",
+        "/gallery/WhatsApp Image 2025-08-23 at 12.27.50 PM (1).jpeg"
       ],
-      volunteer: [
-        "/gallery/WhatsApp Image 2025-08-23 at 12.13.44 PM (1).jpeg"
-      ],
+      volunteer: [],
       partnership: [],
       events: []
     };
@@ -186,6 +210,15 @@ const Gallery = () => {
                         alt={`Gallery image ${index + 1}`}
                         className="w-full h-full object-cover"
                         loading="lazy"
+                        onError={(e) => {
+                          // Handle broken image - show placeholder
+                          const target = e.target as HTMLImageElement;
+                          if (!imageErrors.has(imagePath)) {
+                            setImageErrors(prev => new Set(prev).add(imagePath));
+                            target.src = '/gallery/placeholder.svg';
+                            console.warn(`Failed to load image: ${imagePath}`);
+                          }
+                        }}
                       />
                       
                       {/* Subtle overlay on hover */}
@@ -202,10 +235,11 @@ const Gallery = () => {
                 <div className="bg-white rounded-2xl p-8 border border-gray-200 max-w-2xl mx-auto">
                   <h4 className="text-lg font-semibold text-gray-900 mb-4">How to add photos:</h4>
                   <div className="text-left space-y-3 text-sm text-gray-600">
-                    <p>1. <strong>Add photos</strong> to the appropriate subfolders in <code className="bg-gray-100 px-2 py-1 rounded">public/gallery/</code></p>
-                    <p>2. <strong>Update the getCategoryImages function</strong> in Gallery.tsx with your photo paths</p>
-                    <p>3. <strong>Photos will automatically appear</strong> in the image grid</p>
-                    <p>4. <strong>Filter by category</strong> to see photos from specific folders</p>
+                    <p>1. <strong>Supported formats:</strong> JPG, JPEG, PNG, GIF, WEBP, SVG (all case-insensitive)</p>
+                    <p>2. <strong>Add photos</strong> to the appropriate subfolders in <code className="bg-gray-100 px-2 py-1 rounded">public/gallery/</code></p>
+                    <p>3. <strong>Update the getCategoryImages function</strong> in Gallery.tsx with your photo paths</p>
+                    <p>4. <strong>Photos will automatically appear</strong> in the image grid</p>
+                    <p>5. <strong>Filter by category</strong> to see photos from specific folders</p>
                   </div>
                 </div>
               </div>
