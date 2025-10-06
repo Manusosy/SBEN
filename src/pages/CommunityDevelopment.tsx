@@ -41,7 +41,7 @@ const CommunityDevelopment = () => {
       <PageHero
         title="Community Development"
         description="Building stronger communities"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.13.45 PM.jpeg"
       />
 
       {/* Overview Section */}

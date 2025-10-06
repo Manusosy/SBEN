@@ -42,7 +42,7 @@ const SuccessStories = () => {
       <PageHero
         title="Success Stories"
         description="Real stories of transformation and achievement"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.27.50 PM (1).jpeg"
       />
 
       {/* Impact Stats */}

@@ -41,7 +41,7 @@ const EducationInitiatives = () => {
       <PageHero
         title="Education Initiatives"
         description="Supporting academic excellence"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/education/WhatsApp Image 2025-08-23 at 12.42.37 PM (2).jpeg"
       />
 
       {/* Overview Section */}

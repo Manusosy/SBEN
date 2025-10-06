@@ -51,7 +51,7 @@ const Contact = () => {
         <PageHero
           title="Get in Touch"
           description="Building bridges to dignity, equity, and sustainable development through education, healthcare, and empowerment."
-          imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+          imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.42.36 PM.jpeg"
         />
 
         <div className="container mx-auto px-4 pb-24">
@@ -138,8 +138,8 @@ const Contact = () => {
               <div>
                 <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
                 <div className="space-y-2 text-muted-foreground">
-                  <p>Email: contact@sben.org</p>
-                  <p>Phone: +254 XXX XXX XXX</p>
+                  <p>Email: info@shinebridgeempowermentnetwork.org</p>
+                  <p>Phone: +254 745 577530 / +254 795 549619</p>
                 </div>
               </div>
 

@@ -60,7 +60,7 @@ const EnvironmentalConservation = () => {
       <PageHero
         title="Environmental Conservation"
         description="Leading community initiatives for a cleaner, greener, and more sustainable environment"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/environmental/WhatsApp Image 2025-09-06 at 5.09.32 PM.jpeg"
       />
 
       {/* Initiatives */}

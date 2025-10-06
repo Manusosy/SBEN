@@ -60,7 +60,7 @@ const DigitalLiteracy = () => {
       <PageHero
         title="Digital Literacy"
         description="Equipping youth with essential digital skills for the modern workforce"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/digital-literacy/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg"
       />
 
       {/* Initiatives */}

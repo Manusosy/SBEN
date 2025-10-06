@@ -60,7 +60,7 @@ const FinancialInclusion = () => {
       <PageHero
         title="Financial Inclusion"
         description="Promoting financial literacy and access to sustainable saving and lending programs"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.32 PM.jpeg"
       />
 
       {/* Initiatives */}

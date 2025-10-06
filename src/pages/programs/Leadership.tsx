@@ -56,7 +56,7 @@ const LeadershipDevelopment = () => {
       <PageHero
         title="Leadership Development"
         description="Cultivating effective leaders for tomorrow"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/education/WhatsApp Image 2025-08-23 at 12.13.44 PM (1).jpeg"
       />
 
       {/* Programs */}

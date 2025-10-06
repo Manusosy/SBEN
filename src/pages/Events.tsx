@@ -38,7 +38,7 @@ const Events = () => {
       <PageHero
         title="Upcoming Events"
         description="Join us in making a difference in our community"
-        imagePath="/lovable-uploads/2e4ff685-7212-4b95-9338-d2a7d96500bd.png"
+        imagePath="/gallery/WhatsApp Image 2025-08-23 at 12.42.38 PM.jpeg"
       />
 
       {/* Events List */}
