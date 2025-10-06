@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactInfo from '@/components/ContactInfo';
 import FloatingContactButton from '@/components/FloatingContactButton';
+import CookieConsent from '@/components/CookieConsent';
 
 type PageLayoutProps = {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ const PageLayout = ({ children, showContact = false }: PageLayoutProps) => {
       {showContact && <ContactInfo />}
       <Footer />
       {showContact && <FloatingContactButton />}
+      <CookieConsent />
     </div>
   );
 };

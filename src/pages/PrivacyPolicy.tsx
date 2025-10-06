@@ -149,15 +149,44 @@ const PrivacyPolicy = () => {
               
               <h2 className="text-2xl font-semibold mt-8 mb-4 text-primary-600">8. Cookies and Tracking Technologies</h2>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                Our website uses cookies to:
+                Our website uses cookies and similar tracking technologies to enhance your browsing experience and analyze website performance. We use the following types of cookies:
+              </p>
+              
+              <h3 className="text-xl font-semibold mt-6 mb-3 text-gray-800">Types of Cookies We Use</h3>
+              <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-3">
+                <li>
+                  <strong>Necessary Cookies:</strong> These cookies are essential for the website to function properly. 
+                  They enable basic functions like page navigation, secure areas access, and remembering your cookie preferences. 
+                  These cookies cannot be disabled.
+                </li>
+                <li>
+                  <strong>Analytics Cookies:</strong> These cookies help us understand how visitors interact with our website 
+                  by collecting and reporting information anonymously. This includes pages visited, time spent on the site, 
+                  and traffic sources. We use this data to improve our website performance and user experience.
+                </li>
+                <li>
+                  <strong>Marketing Cookies:</strong> These cookies are used to track visitors across websites to display 
+                  relevant advertisements and encourage support for our cause. They may be set by our advertising partners 
+                  through our site.
+                </li>
+              </ul>
+              
+              <h3 className="text-xl font-semibold mt-6 mb-3 text-gray-800">Managing Your Cookie Preferences</h3>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                When you first visit our website, you will see a cookie consent banner where you can:
               </p>
               <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-2">
-                <li>Improve website performance and user experience.</li>
-                <li>Analyze traffic and usage trends (via analytics tools).</li>
-                <li>Remember preferences and login sessions.</li>
+                <li>Accept all cookies</li>
+                <li>Reject non-essential cookies (only necessary cookies will be used)</li>
+                <li>Customize your preferences by selecting which cookie categories to allow</li>
               </ul>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                You can change your cookie preferences at any time by clicking the "Cookie Settings" link in the footer of our website.
+              </p>
               <p className="text-gray-700 mb-6 leading-relaxed">
-                You may disable cookies through your browser settings, but some features may not function properly.
+                You may also disable cookies through your browser settings, but please note that some features of our website 
+                may not function properly if cookies are disabled. Your cookie preferences are stored in your browser's local 
+                storage and will be remembered for future visits.
               </p>
               
               <hr className="my-8 border-gray-300" />

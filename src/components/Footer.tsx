@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import emailjs from "emailjs-com";
 import { toast } from "sonner";
+import CookieSettings from "./CookieSettings";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -211,13 +212,14 @@ const Footer = () => {
         <div className="border-t border-primary-700 bg-primary-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="flex flex-wrap justify-center md:justify-start space-x-6 text-sm text-gray-400">
+              <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-gray-400">
                 <Link to="/privacy-policy" className="hover:text-secondary-400 transition-colors">
                   Privacy Policy
                 </Link>
                 <Link to="/terms-of-service" className="hover:text-secondary-400 transition-colors">
                   Terms of Service
                 </Link>
+                <CookieSettings />
                 <Link to="/contact" className="hover:text-secondary-400 transition-colors">
                   Contact Us
                 </Link>
