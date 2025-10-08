@@ -5,7 +5,7 @@ import MissionSection from '@/components/MissionSection';
 import Programs from '@/components/Programs';
 import ImpactStats from '@/components/ImpactStats';
 import BlogPreview from '@/components/BlogPreview';
-import Newsletter from '@/components/Newsletter';
+import GallerySlider from '@/components/GallerySlider';
 import SEO from '@/components/SEO';
 
 const Index = () => {
@@ -22,7 +22,7 @@ const Index = () => {
       <Programs />
       <ImpactStats />
       <BlogPreview />
-      <Newsletter />
+      <GallerySlider limit={30} />
     </PageLayout>
   );
 };

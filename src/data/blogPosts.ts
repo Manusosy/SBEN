@@ -78,7 +78,7 @@ export const blogPosts: BlogPost[] = [
     author: 'SBEN Team',
     date: 'January 15, 2025',
     category: 'Women Empowerment',
-    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.38 PM.jpeg',
+    imageUrl: '/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.32 PM (1).jpeg',
     keywords: ['women empowerment', 'economic independence', 'savings groups', 'business training', 'Kibera'],
     metaDescription: 'Learn how SBEN is empowering women in Kibera through economic independence programs and leadership development.'
   },
@@ -129,7 +129,7 @@ export const blogPosts: BlogPost[] = [
     author: 'SBEN Team',
     date: 'January 10, 2025',
     category: 'Digital Literacy',
-    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (3).jpeg',
+    imageUrl: '/gallery/digital-literacy/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg',
     keywords: ['digital literacy', 'computer skills', 'technology education', 'youth development', 'Kibera'],
     metaDescription: 'Discover how SBEN is bridging the digital divide in Kibera through comprehensive computer skills training and technology education.'
   },
@@ -180,7 +180,7 @@ export const blogPosts: BlogPost[] = [
     author: 'SBEN Team',
     date: 'January 5, 2025',
     category: 'Environmental Conservation',
-    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg',
+    imageUrl: '/gallery/environmental/WhatsApp Image 2025-09-06 at 5.09.32 PM.jpeg',
     keywords: ['environmental conservation', 'tree planting', 'waste management', 'sustainability', 'Kibera'],
     metaDescription: 'Learn about SBEN\'s environmental conservation efforts in Kibera, including tree planting and waste management initiatives.'
   },
@@ -282,7 +282,7 @@ export const blogPosts: BlogPost[] = [
     author: 'SBEN Team',
     date: 'December 20, 2024',
     category: 'Education',
-    imageUrl: '/gallery/WhatsApp Image 2025-08-23 at 12.42.36 PM.jpeg',
+    imageUrl: '/gallery/education/WhatsApp Image 2025-08-23 at 12.13.44 PM (1).jpeg',
     keywords: ['education support', 'scholarships', 'learning resources', 'academic success', 'Kibera'],
     metaDescription: 'Learn how SBEN is supporting education in Kibera through scholarships, learning resources, and mentorship programs.'
   },

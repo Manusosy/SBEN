@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
-import CookieConsent from "./CookieConsent";
+// CookieConsent is already rendered via PageLayout to avoid duplicates
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,7 +13,6 @@ const Layout = ({ children }: LayoutProps) => {
       <main className="flex-grow">
         {children}
       </main>
-      <CookieConsent />
     </div>
   );
 };

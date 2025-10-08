@@ -79,8 +79,8 @@ const MissionSection = () => {
           >
             <div className="relative">
               <img
-                src="/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg"
-                alt="Community empowerment initiatives"
+                src="/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.33 PM.jpeg"
+                alt="Women empowerment activity"
                 className="w-full h-80 object-cover rounded-xl shadow-lg"
               />
             </div>

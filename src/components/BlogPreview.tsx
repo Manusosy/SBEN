@@ -73,21 +73,7 @@ const BlogPreview = () => {
           ))}
         </div>
 
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <Link
-            to="/blog"
-            className="inline-flex items-center px-6 py-3 bg-secondary-500 text-white rounded-lg hover:bg-secondary-600 transition-all group"
-          >
-            View All Articles
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </Link>
-        </motion.div>
+        {/* Removed top-centered View All Articles button as requested */}
       </div>
     </section>
   );

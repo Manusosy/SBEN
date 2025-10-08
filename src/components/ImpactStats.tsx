@@ -144,8 +144,8 @@ const ImpactStats = () => {
             <div className="text-center lg:text-left">
               <div className="mb-6">
                 <img
-                  src="/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg"
-                  alt="Community impact and transformation"
+                  src="/gallery/education/WhatsApp Image 2025-08-23 at 12.42.38 PM (1).jpeg"
+                  alt="Students supported and community learning"
                   className="w-full h-48 object-cover rounded-lg"
                 />
               </div>

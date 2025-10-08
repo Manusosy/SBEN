@@ -27,7 +27,7 @@ const programs = [
     title: "Women Empowerment",
     description: "Supporting women through savings groups, business skills training, and leadership development.",
     link: "/programs/women-empowerment",
-    image: "/gallery/WhatsApp Image 2025-08-23 at 12.42.37 PM (1).jpeg",
+    image: "/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.33 PM (1).jpeg",
     color: "from-community-light to-community-dark",
     tag: "Empowerment"
   },
@@ -45,7 +45,7 @@ const programs = [
     title: "Financial Inclusion",
     description: "Promoting financial literacy and access to sustainable saving and lending programs.",
     link: "/programs/financial-inclusion",
-    image: "/gallery/WhatsApp Image 2025-08-23 at 12.42.36 PM.jpeg",
+    image: "/gallery/women-empowerment/WhatsApp Image 2025-09-06 at 5.26.32 PM.jpeg",
     color: "from-empowerment-100 to-empowerment-200",
     tag: "Finance"
   },
@@ -54,7 +54,7 @@ const programs = [
     title: "Environmental Conservation",
     description: "Leading community initiatives for a cleaner, greener, and more sustainable environment.",
     link: "/programs/environmental",
-    image: "/gallery/WhatsApp Image 2025-08-23 at 12.27.49 PM (2).jpeg",
+    image: "/gallery/environmental/WhatsApp Image 2025-09-06 at 5.09.33 PM.jpeg",
     color: "from-success-100 to-success-200",
     tag: "Environment"
   }

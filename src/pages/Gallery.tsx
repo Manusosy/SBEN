@@ -8,18 +8,14 @@ import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
 
-// Gallery categories - these will match your subfolder names
+// Gallery categories for the filter. Removed Events, Partnership, Healthcare, Volunteer from the UI.
 const categories = [
   { value: "all", label: "All Photos" },
   { value: "education", label: "Education" },
-  { value: "healthcare", label: "Healthcare" },
   { value: "women-empowerment", label: "Women Empowerment" },
   { value: "digital-literacy", label: "Digital Literacy" },
   { value: "environmental", label: "Environmental" },
-  { value: "community", label: "Community" },
-  { value: "volunteer", label: "Volunteer" },
-  { value: "partnership", label: "Partnership" },
-  { value: "events", label: "Events" }
+  { value: "community", label: "Community" }
 ];
 
 // Helper function to validate image file extensions
@@ -39,17 +35,22 @@ const Gallery = () => {
   // Function to get all images from a specific category folder
   const getImagesFromCategory = (category: string) => {
     if (category === "all") {
-      // Get all images from all subfolders
+      // Include images from all known categories, even those not shown in the filter
+      const allCategoryKeys = [
+        "education",
+        "women-empowerment",
+        "digital-literacy",
+        "environmental",
+        "community",
+        "healthcare" // keep healthcare images visible under All if present
+      ];
       const allImages: string[] = [];
-      categories.forEach(cat => {
-        if (cat.value !== "all") {
-          // This would normally scan the folder, but for now we'll use a predefined list
-          // You can add your actual image paths here
-          const categoryImages = getCategoryImages(cat.value);
-          allImages.push(...categoryImages);
-        }
+      allCategoryKeys.forEach((key) => {
+        const categoryImages = getCategoryImages(key);
+        allImages.push(...categoryImages);
       });
-      return allImages;
+      // de-duplicate in case paths overlap
+      return Array.from(new Set(allImages));
     } else {
       // Get images from specific category folder
       return getCategoryImages(category);

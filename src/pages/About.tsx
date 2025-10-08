@@ -136,9 +136,11 @@ export const About = () => {
             <p className="text-muted-foreground mb-6">
               Help us create positive change in the Kibera community
             </p>
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Contact Us
-            </Button>
+            <a href="/contact">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                Contact Us
+              </Button>
+            </a>
           </motion.div>
         </div>
       </section>
