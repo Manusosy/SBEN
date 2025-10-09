@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, Heart, Zap, Users, Building, Legacy, Facebook, Twitter, Linkedin } from "lucide-react";
+import { ArrowRight, Heart, Zap, Users, Building, Facebook, Twitter, Linkedin } from "lucide-react";
 import PageLayout from '@/components/PageLayout';
 import PageHero from '@/components/PageHero';
 import { toast } from "sonner";
@@ -36,24 +36,25 @@ const AnimatedCounter = ({ value }: { value: string }) => {
 
   useEffect(() => {
     if (!isVisible) return;
+    
+    // Handle different value formats
+    if (value.includes('/')) {
+      return; // For "24/7" type values, just show the value
+    }
 
     let startValue = 0;
     let endValue: number;
     
-    // Handle different value formats
     if (value.includes('%')) {
       endValue = parseInt(value.replace('%', ''));
     } else if (value.includes('+')) {
       endValue = parseInt(value.replace('+', ''));
-    } else if (value.includes('/')) {
-      // For "24/7" type values, just show the value
-      return <span>{value}</span>;
     } else {
       endValue = parseInt(value);
     }
 
     if (isNaN(endValue)) {
-      return <span>{value}</span>;
+      return;
     }
 
     const duration = 2000; // 2 seconds
