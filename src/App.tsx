@@ -28,6 +28,11 @@ import Events from "./pages/Events";
 import SuccessStories from "./pages/SuccessStories";
 import GetInvolved from "./pages/GetInvolved";
 import Gallery from "./pages/Gallery";
+import Auth from "./pages/Auth";
+import Dashboard from "./pages/admin/Dashboard";
+import BlogManager from "./pages/admin/BlogManager";
+import GalleryManager from "./pages/admin/GalleryManager";
+import ProgramsManager from "./pages/admin/ProgramsManager";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -61,6 +66,12 @@ const App = () => {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/admin" element={<Dashboard />} />
+              <Route path="/admin/blog" element={<BlogManager />} />
+              <Route path="/admin/gallery" element={<GalleryManager />} />
+              <Route path="/admin/programs" element={<ProgramsManager />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
         </BrowserRouter>
