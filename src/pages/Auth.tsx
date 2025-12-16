@@ -28,7 +28,7 @@ const Auth = () => {
     if (!isValidDomain) {
       toast({
         title: 'Access Restricted',
-        description: `Only emails ending in ${REQUIRED_DOMAIN} are allowed.`,
+        description: 'This email address is not authorized for access.',
         variant: 'destructive',
       });
       setLoading(false);
@@ -127,7 +127,7 @@ const Auth = () => {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="admin@shinebridgeempowermentnetwork.org"
+                  placeholder="mail@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={`pl-10 ${showDomainError ? "border-destructive focus-visible:ring-destructive" : ""}`}
@@ -135,7 +135,7 @@ const Auth = () => {
                 />
               </div>
               {showDomainError && (
-                <p className="text-xs text-destructive mt-1">Invalid email format</p>
+                <p className="text-xs text-destructive mt-1">Invalid email address</p>
               )}
             </div>
 

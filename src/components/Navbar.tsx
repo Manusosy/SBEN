@@ -24,13 +24,46 @@ import {
   Mail,
   ChevronDown,
   Menu,
-  X
+  X,
+  User as UserIcon,
+  LogIn,
+  LogOut,
+  Settings,
+  LayoutDashboard,
 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { User } from "@supabase/supabase-js";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSections, setOpenSections] = useState<string[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    // Check active session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,8 +82,8 @@ const Navbar = () => {
   };
 
   const toggleSection = (section: string) => {
-    setOpenSections(prev => 
-      prev.includes(section) 
+    setOpenSections(prev =>
+      prev.includes(section)
         ? prev.filter(s => s !== section)
         : [...prev, section]
     );
@@ -66,26 +99,26 @@ const Navbar = () => {
           {/* Logo - Left */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center space-x-3">
-              <img 
-                src="/lovable-uploads/shinebridgeempowermentlogo.png" 
-                alt="SBEN Logo" 
+              <img
+                src="/lovable-uploads/shinebridgeempowermentlogo.png"
+                alt="SBEN Logo"
                 className="h-12 w-auto"
               />
             </Link>
           </div>
-          
+
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex flex-grow justify-center">
             <NavigationMenu className={cn("")}>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}> 
+                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}>
                     <Link to="/">Home</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-                
+
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={cn("text-gray-700 hover:text-gray-900")}> 
+                  <NavigationMenuTrigger className={cn("text-gray-700 hover:text-gray-900")}>
                     About Us
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -119,15 +152,15 @@ const Navbar = () => {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                
+
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}> 
+                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}>
                     <Link to="/programs">Programs</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-                
+
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={cn("text-gray-700 hover:text-gray-900")}> 
+                  <NavigationMenuTrigger className={cn("text-gray-700 hover:text-gray-900")}>
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -187,9 +220,9 @@ const Navbar = () => {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                
+
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}> 
+                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-gray-700 hover:text-gray-900")}>
                     <Link to="/contact">Contact Us</Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -199,6 +232,57 @@ const Navbar = () => {
 
           {/* Right side - Desktop Donate Button and Mobile Menu Button */}
           <div className="flex items-center space-x-4">
+            {/* User Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200 hover:border-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#000080]">
+                  {user ? (
+                    <div className="w-full h-full bg-[#000080] flex items-center justify-center text-white font-medium">
+                      {user.email?.[0].toUpperCase()}
+                    </div>
+                  ) : (
+                    <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200">
+                      <UserIcon className="w-5 h-5" />
+                    </div>
+                  )}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                {user ? (
+                  <>
+                    <div className="px-2 py-1.5 text-sm font-medium text-gray-900 truncate">
+                      {user.email}
+                    </div>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link to="/admin" className="cursor-pointer">
+                        <LayoutDashboard className="w-4 h-4 mr-2" />
+                        Dashboard
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link to="/admin/settings" className="cursor-pointer">
+                        <Settings className="w-4 h-4 mr-2" />
+                        Settings
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={handleLogout} className="text-red-600 cursor-pointer">
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Logout
+                    </DropdownMenuItem>
+                  </>
+                ) : (
+                  <DropdownMenuItem asChild>
+                    <Link to="/auth" className="cursor-pointer">
+                      <LogIn className="w-4 h-4 mr-2" />
+                      Sign In
+                    </Link>
+                  </DropdownMenuItem>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             {/* Donate Button - Hidden on mobile */}
             <div className="hidden md:block">
               <Link to="/donate" className="inline-flex items-center justify-center rounded-md text-sm font-medium bg-secondary-500 text-white h-12 px-6 py-3 hover:bg-secondary-600 transition-colors">
@@ -254,11 +338,11 @@ const Navbar = () => {
                     <BookOpen className="w-5 h-5 mr-3" />
                     About Us
                   </div>
-                  <ChevronDown 
+                  <ChevronDown
                     className={cn(
                       "w-5 h-5 transition-transform duration-200",
                       openSections.includes('about') ? "rotate-180" : ""
-                    )} 
+                    )}
                   />
                 </button>
                 <AnimatePresence>
@@ -309,11 +393,11 @@ const Navbar = () => {
                     <FileText className="w-5 h-5 mr-3" />
                     Resources
                   </div>
-                  <ChevronDown 
+                  <ChevronDown
                     className={cn(
                       "w-5 h-5 transition-transform duration-200",
                       openSections.includes('resources') ? "rotate-180" : ""
-                    )} 
+                    )}
                   />
                 </button>
                 <AnimatePresence>
