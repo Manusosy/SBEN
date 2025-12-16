@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { useState } from "react";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
@@ -37,6 +37,12 @@ import EventsManager from "./pages/admin/EventsManager";
 import TeamManager from "./pages/admin/TeamManager";
 import SettingsManager from "./pages/admin/SettingsManager";
 
+const PublicLayout = () => (
+  <Layout>
+    <Outlet />
+  </Layout>
+);
+
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
 
@@ -46,8 +52,8 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Layout>
-            <Routes>
+          <Routes>
+            <Route element={<PublicLayout />}>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/about/team" element={<Team />} />
@@ -70,16 +76,17 @@ const App = () => {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/admin" element={<Dashboard />} />
-              <Route path="/admin/blog" element={<BlogManager />} />
-              <Route path="/admin/gallery" element={<GalleryManager />} />
-              <Route path="/admin/programs" element={<ProgramsManager />} />
-              <Route path="/admin/events" element={<EventsManager />} />
-              <Route path="/admin/team" element={<TeamManager />} />
-              <Route path="/admin/settings" element={<SettingsManager />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
+            </Route>
+
+            <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin/blog" element={<BlogManager />} />
+            <Route path="/admin/gallery" element={<GalleryManager />} />
+            <Route path="/admin/programs" element={<ProgramsManager />} />
+            <Route path="/admin/events" element={<EventsManager />} />
+            <Route path="/admin/team" element={<TeamManager />} />
+            <Route path="/admin/settings" element={<SettingsManager />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

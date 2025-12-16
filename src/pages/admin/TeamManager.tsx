@@ -217,75 +217,77 @@ const TeamManager = () => {
                     </Button>
                 </div>
 
-                <div className="bg-white rounded-lg shadow">
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Member</TableHead>
-                                <TableHead>Role</TableHead>
-                                <TableHead>Order</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead className="text-right">Actions</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {members.map((member) => (
-                                <TableRow key={member.id}>
-                                    <TableCell>
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden">
-                                                {member.image_url ? (
-                                                    <img src={member.image_url} alt={member.name} className="w-full h-full object-cover" />
-                                                ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-gray-400">
-                                                        <Upload className="w-4 h-4" />
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <div className="font-medium">{member.name}</div>
-                                        </div>
-                                    </TableCell>
-                                    <TableCell>{member.role}</TableCell>
-                                    <TableCell>{member.display_order}</TableCell>
-                                    <TableCell>
-                                        <span
-                                            className={`px-2 py-1 rounded-full text-xs font-medium ${member.status === 'active'
-                                                ? 'bg-green-100 text-green-800'
-                                                : 'bg-gray-100 text-gray-800'
-                                                }`}
-                                        >
-                                            {member.status}
-                                        </span>
-                                    </TableCell>
-                                    <TableCell className="text-right">
-                                        <div className="flex justify-end gap-2">
-                                            <Button
-                                                size="sm"
-                                                variant="ghost"
-                                                onClick={() => handleEdit(member)}
-                                            >
-                                                <Edit className="w-4 h-4" />
-                                            </Button>
-                                            <Button
-                                                size="sm"
-                                                variant="ghost"
-                                                onClick={() => handleDelete(member.id)}
-                                            >
-                                                <Trash2 className="w-4 h-4" />
-                                            </Button>
-                                        </div>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                            {members.length === 0 && !loading && (
+                <div className="bg-white rounded-lg shadow overflow-hidden">
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
                                 <TableRow>
-                                    <TableCell colSpan={5} className="text-center py-8 text-gray-500">
-                                        No team members found. Add your first member!
-                                    </TableCell>
+                                    <TableHead>Member</TableHead>
+                                    <TableHead>Role</TableHead>
+                                    <TableHead>Order</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead className="text-right">Actions</TableHead>
                                 </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
+                            </TableHeader>
+                            <TableBody>
+                                {members.map((member) => (
+                                    <TableRow key={member.id}>
+                                        <TableCell>
+                                            <div className="flex items-center gap-3 min-w-[200px]">
+                                                <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden flex-shrink-0">
+                                                    {member.image_url ? (
+                                                        <img src={member.image_url} alt={member.name} className="w-full h-full object-cover" />
+                                                    ) : (
+                                                        <div className="w-full h-full flex items-center justify-center text-gray-400">
+                                                            <Upload className="w-4 h-4" />
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className="font-medium">{member.name}</div>
+                                            </div>
+                                        </TableCell>
+                                        <TableCell className="whitespace-nowrap">{member.role}</TableCell>
+                                        <TableCell>{member.display_order}</TableCell>
+                                        <TableCell>
+                                            <span
+                                                className={`px-2 py-1 rounded-full text-xs font-medium ${member.status === 'active'
+                                                    ? 'bg-green-100 text-green-800'
+                                                    : 'bg-gray-100 text-gray-800'
+                                                    }`}
+                                            >
+                                                {member.status}
+                                            </span>
+                                        </TableCell>
+                                        <TableCell className="text-right">
+                                            <div className="flex justify-end gap-2">
+                                                <Button
+                                                    size="sm"
+                                                    variant="ghost"
+                                                    onClick={() => handleEdit(member)}
+                                                >
+                                                    <Edit className="w-4 h-4" />
+                                                </Button>
+                                                <Button
+                                                    size="sm"
+                                                    variant="ghost"
+                                                    onClick={() => handleDelete(member.id)}
+                                                >
+                                                    <Trash2 className="w-4 h-4" />
+                                                </Button>
+                                            </div>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                                {members.length === 0 && !loading && (
+                                    <TableRow>
+                                        <TableCell colSpan={5} className="text-center py-8 text-gray-500">
+                                            No team members found. Add your first member!
+                                        </TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </div>
             </div>
 
