@@ -14,6 +14,83 @@ export type Database = {
   }
   public: {
     Tables: {
+      events: {
+        Row: {
+          id: string
+          title: string
+          date: string
+          time: string | null
+          location: string | null
+          description: string | null
+          category: string | null
+          registration_link: string | null
+          image_url: string | null
+          status: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          date: string
+          time?: string | null
+          location?: string | null
+          description?: string | null
+          category?: string | null
+          registration_link?: string | null
+          image_url?: string | null
+          status?: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          date?: string
+          time?: string | null
+          location?: string | null
+          description?: string | null
+          category?: string | null
+          registration_link?: string | null
+          image_url?: string | null
+          status?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+      event_registrations: {
+        Row: {
+          id: string
+          event_id: string
+          name: string
+          email: string
+          phone: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          event_id: string
+          name: string
+          email: string
+          phone?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          event_id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "event_registrations_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       blog_posts: {
         Row: {
           author: string

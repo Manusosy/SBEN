@@ -25,12 +25,14 @@ import DigitalLiteracy from "./pages/programs/DigitalLiteracy";
 import FinancialInclusion from "./pages/programs/FinancialInclusion";
 import EnvironmentalConservation from "./pages/programs/Environmental";
 import Events from "./pages/Events";
+import EventDetail from "./pages/EventDetail";
 import SuccessStories from "./pages/SuccessStories";
 import GetInvolved from "./pages/GetInvolved";
 import Gallery from "./pages/Gallery";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/admin/Dashboard";
 import BlogManager from "./pages/admin/BlogManager";
+import BlogPostEditor from "./pages/admin/BlogPostEditor";
 import GalleryManager from "./pages/admin/GalleryManager";
 import ProgramsManager from "./pages/admin/ProgramsManager";
 import EventsManager from "./pages/admin/EventsManager";
@@ -71,6 +73,7 @@ const App = () => {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPostDetail />} />
               <Route path="/resources/events" element={<Events />} />
+              <Route path="/resources/events/:id" element={<EventDetail />} />
               <Route path="/resources/success-stories" element={<SuccessStories />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -80,6 +83,8 @@ const App = () => {
 
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/blog" element={<BlogManager />} />
+            <Route path="/admin/blog/new" element={<BlogPostEditor />} />
+            <Route path="/admin/blog/:id" element={<BlogPostEditor />} />
             <Route path="/admin/gallery" element={<GalleryManager />} />
             <Route path="/admin/programs" element={<ProgramsManager />} />
             <Route path="/admin/events" element={<EventsManager />} />

@@ -7,7 +7,17 @@ export interface Event {
     description: string | null;
     category: string | null;
     registration_link: string | null;
+    image_url: string | null;
     status: 'published' | 'draft' | 'archived';
+    created_at: string;
+}
+
+export interface EventRegistration {
+    id: string;
+    event_id: string;
+    name: string;
+    email: string;
+    phone: string | null;
     created_at: string;
 }
 
@@ -77,11 +87,12 @@ export interface BlogPost {
     title: string;
     slug: string;
     excerpt: string;
-    content: ContentSection[];
+    content: ContentSection[] | string;
     author: string;
     category: string;
     image_url: string | null;
     keywords: string[] | null;
+    tags: string[] | null;
     meta_description: string | null;
     status: string;
     published_at: string | null;

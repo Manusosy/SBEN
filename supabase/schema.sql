@@ -11,6 +11,7 @@ create table if not exists public.events (
   description text,
   category text,
   registration_link text,
+  image_url text,
   status text default 'draft' check (status in ('draft', 'published', 'archived')),
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
@@ -64,6 +65,7 @@ create table if not exists public.blog_posts (
   category text,
   image_url text,
   keywords text[],
+  tags text[],
   meta_description text,
   status text default 'draft',
   published_at timestamp with time zone,
@@ -81,6 +83,16 @@ create table if not exists public.gallery_images (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
+-- Event Registrations
+create table if not exists public.event_registrations (
+  id uuid default uuid_generate_v4() primary key,
+  event_id uuid not null references public.events(id) on delete cascade,
+  name text not null,
+  email text not null,
+  phone text,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
 -- Enable Row Level Security (RLS) on all tables
 alter table public.events enable row level security;
 alter table public.team_members enable row level security;
@@ -88,6 +100,7 @@ alter table public.site_settings enable row level security;
 alter table public.programs enable row level security;
 alter table public.blog_posts enable row level security;
 alter table public.gallery_images enable row level security;
+alter table public.event_registrations enable row level security;
 
 -- Create Policies
 -- Allow public read access
@@ -124,6 +137,12 @@ create policy "Admins can delete blog posts" on public.blog_posts for delete usi
 create policy "Admins can insert gallery images" on public.gallery_images for insert with check (auth.role() = 'authenticated');
 create policy "Admins can update gallery images" on public.gallery_images for update using (auth.role() = 'authenticated');
 create policy "Admins can delete gallery images" on public.gallery_images for delete using (auth.role() = 'authenticated');
+
+-- Policies for event_registrations
+create policy "Anyone can register for events" on public.event_registrations for insert with check (true);
+create policy "Admins can view registrations" on public.event_registrations for select using (auth.role() = 'authenticated');
+create policy "Admins can update registrations" on public.event_registrations for update using (auth.role() = 'authenticated');
+create policy "Admins can delete registrations" on public.event_registrations for delete using (auth.role() = 'authenticated');
 
 -- Storage Bucket for Media
 insert into storage.buckets (id, name, public) 

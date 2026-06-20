@@ -4,9 +4,19 @@
 
 console.log('Silktide Consent Manager placeholder loaded.');
 
-// Mock the global object expected by GTM to prevent ReferenceErrors
-window.silktideCookieBannerManager = {
-    // Add minimal methods if GTM calls them, for now just existence is enough specifically for the ReferenceError
+// Mock the global object expected by GTM to prevent ReferenceErrors and TypeErrors
+window.silktideCookieBannerManager = new Proxy({
     init: function () { console.log('Mock Silktide init'); },
     reset: function () { console.log('Mock Silktide reset'); }
-};
+}, {
+    get: function (target, prop) {
+        if (prop in target) {
+            return target[prop];
+        }
+        // Dynamically return a dummy function for any undefined method accessed to prevent "not a function" TypeErrors
+        return function () {
+            console.log(`Mock Silktide dummy fallback called for: ${String(prop)}`);
+            return true;
+        };
+    }
+});

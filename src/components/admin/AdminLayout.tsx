@@ -105,7 +105,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 flex overflow-x-hidden">
       {/* Mobile Overlay */}
       {isMobile && sidebarOpen && (
         <div
@@ -181,7 +181,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
       {/* Main Content */}
       <div
-        className={`flex-1 transition-all duration-300 ${sidebarOpen && !isMobile ? 'ml-64' : 'ml-0'
+        className={`flex-1 min-w-0 overflow-x-hidden transition-all duration-300 ${sidebarOpen && !isMobile ? 'ml-64' : 'ml-0'
           }`}
       >
         <header className="bg-white shadow-sm sticky top-0 z-30">
@@ -244,7 +244,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
           </div>
         </header>
 
-        <main className="p-4 sm:p-6 max-w-[1600px] mx-auto">{children}</main>
+        <main className="p-4 sm:p-6 w-full max-w-full overflow-x-hidden">{children}</main>
       </div>
     </div>
   );

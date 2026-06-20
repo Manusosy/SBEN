@@ -268,3 +268,13 @@
 .animate-pulse-slow {
   animation: pulse-slow 4s ease-in-out infinite;
 }
+
+/* Tiptap Placeholder Styles */
+.tiptap p.is-editor-empty:first-child::before {
+  color: #9ca3af; /* Tailwind text-gray-400 */
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  font-style: italic;
+}
